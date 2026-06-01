@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="main-card">
+<h1>Přehled pokusů</h1>
+
+<h2>Aktuální známka: {{ grade }}</h2>
+<table class="wide-table">
+<tr><th>ID</th><th>Student</th><th>Začátek</th><th>Dokončeno</th><th>Krok</th></tr>
+{% for a in attempts %}
+<tr><td>{{ a.id }}</td><td>{{ a.student_name }}</td><td>{{ a.created_at }}</td><td>{{ a.finished_at or '-' }}</td><td>{{ a.current_step }}</td></tr>
+{% endfor %}
+</table>
+</section>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "scitani_base.html" %}
+{% block content %}
+
+<div class="card">
+
+<h1>Škrtání dvojic</h1>
+
+<h2>Splněno: {{ session.completed }}/10</h2>
+<h2>
+Aktuální známka:
+
+{% if session.completed >= 10 %}
+1
+{% elif session.completed >= 8 %}
+2
+{% elif session.completed >= 6 %}
+3
+{% elif session.completed >= 4 %}
+4
+{% else %}
+5
+{% endif %}
+
+</h2>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+{% for row in rows %}
+<div class="rowbox">
+
+<b>{{ original[loop.index0] }} = </b>
+
+{% for item in row %}
+<span class="factor {% if item.crossed %}crossed{% endif %}">
+{{ item.value }}
+</span>
+
+{% if not loop.last %} × {% endif %}
+{% endfor %}
+
+</div>
+{% endfor %}
+
+<form method="post">
+
+<div class="split">
+
+<div>
+
+<h3>První rozklad</h3>
+
+{% for item in rows[0] %}
+<label class="choice">
+<input type="radio" name="a" value="{{ item.id }}">
+{{ item.value }}
+</label>
+{% endfor %}
+
+</div>
+
+<div>
+
+<h3>Druhý rozklad</h3>
+
+{% for item in rows[1] %}
+
+{% if not item.crossed %}
+<label class="choice">
+<input type="radio" name="b" value="{{ item.id }}">
+{{ item.value }}
+</label>
+{% else %}
+<label class="choice crossed">
+✖ {{ item.value }}
+</label>
+{% endif %}
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<button type="submit">
+Vyškrtnout dvojici
+</button>
+
+<button class="gray" type="submit" name="done" value="1">
+Hotovo
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="layout">
+    <section class="main-card">
+        <h1>Závěr směny</h1>
+
+<h2>Aktuální známka: {{ grade }}</h2>
+        <p>Teď odpověz na 4 otázky podle výkazu. Cílem je pochopit, jestli restaurace vydělala, nebo prodělala.</p>
+
+        {% if feedback %}
+            <div class="{{ 'success' if feedback.ok else 'errors' }}"><p>{{ feedback.text }}</p></div>
+        {% endif %}
+
+        <form method="post" class="account-form">
+            <label>1. Jaké měla restaurace celkové tržby bez DPH?<input name="q1_revenues" inputmode="numeric"></label>
+            <label>2. Jaké měla restaurace celkové náklady bez DPH?<input name="q2_expenses" inputmode="numeric"></label>
+            <label>3. Jaký byl zisk nebo ztráta?<input name="q3_profit" inputmode="numeric"></label>
+            <label>4. Skončila restaurace v zisku, nebo ve ztrátě?</label>
+            <select name="q4_result">
+                <option value="">Vyber...</option>
+                <option value="zisk">Zisk</option>
+                <option value="ztrata">Ztráta</option>
+            </select>
+            <button>Vyhodnotit odpovědi</button>
+        </form>
+
+        <details>
+            <summary>Zobrazit zaúčtované operace</summary>
+            <table class="wide-table">
+                <tr><th>#</th><th>Operace</th><th>Typ</th><th>Bez DPH</th><th>DPH</th><th>Celkem</th></tr>
+                {% for e in entries %}
+                <tr>
+                    <td>{{ e.op_index + 1 }}</td><td>{{ e.operation_text }}</td><td>{{ e.category }}</td><td>{{ e.net }}</td><td>{{ e.vat }}</td><td>{{ e.gross }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </details>
+    </section>
+
+    <aside class="side">
+        <div class="panel">
+            <h2>Malá rozvaha</h2>
+            <table>
+                <tr><td>Počáteční peníze</td><td>{{ totals.start_cash }} Kč</td></tr>
+                <tr><td>Peníze nyní</td><td>{{ totals.cash }} Kč</td></tr>
+                <tr><td>DPH k odvodu</td><td>{{ totals.vat_due }} Kč</td></tr>
+            </table>
+        </div>
+        <div class="panel">
+            <h2>Výkaz zisků a ztrát</h2>
+            <table>
+                <tr><td>Tržby bez DPH</td><td>{{ totals.revenues }} Kč</td></tr>
+                <tr><td>Náklady bez DPH</td><td>{{ totals.expenses }} Kč</td></tr>
+                <tr class="strong"><td>Zisk / ztráta</td><td>{{ totals.profit }} Kč</td></tr>
+            </table>
+        </div>
+    </aside>
+</div>
+{% endblock %}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matematika krok za krokem</title>
+
+    <link rel="stylesheet"href="{{ url_for('matematika.static', filename='style.css') }}"
+>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+
+        <div>
+
+            <h1>Matematika krok za krokem</h1>
+
+            <p>
+                Vyřeš postupně všechny příklady.
+            </p>
+
+        </div>
+
+        <div class="progress">
+
+            {{ current }} / {{ total }}
+
+        </div>
+
+    </div>
+
+    <div class="topic-pill">
+
+        {{ example.topic }}
+
+    </div>
+
+    <div class="equation-box">
+
+        {{ example.zadani }}
+
+    </div>
+
+    <div class="example-box">
+
+        <h2>{{ example.vzor_title }}</h2>
+
+        {% for line in example.vzor %}
+
+            <p>
+                <strong>{{ loop.index }}.</strong>
+                {{ line }}
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+    {% for step in example.steps %}
+
+    <div class="step-box {% if not loop.first %}locked{% endif %}" id="block{{ loop.index }}">
+
+        <h2>{{ step.title }}</h2>
+
+        <div class="mini-vzor">
+
+         {{ step.vzor }}
+
+        </div>
+
+        <div class="step-hint">
+
+    ✏️      {{ step.hint }}
+
+        </div>
+
+        <div class="answer-row">
+
+            <input
+                type="text"
+                id="step{{ loop.index }}"
+                {% if not loop.first %}disabled{% endif %}
+                autocomplete="off"
+                placeholder="Doplň celý krok"
+            >
+
+            <button
+                onclick="checkStep({{ loop.index }})"
+                id="button{{ loop.index }}"
+                {% if not loop.first %}disabled{% endif %}
+            >
+                Zkontrolovat
+            </button>
+
+        </div>
+
+        <p class="message" id="message{{ loop.index }}"></p>
+
+    </div>
+
+    {% endfor %}
+
+    <div class="footer-buttons">
+
+        <button onclick="nextExample()" id="nextButton" disabled>
+
+            Další příklad
+
+        </button>
+
+        <button onclick="resetTest()" class="secondary">
+
+            Začít znovu
+
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const stepCount = {{ example.steps|length }};
+
+async function checkStep(step) {
+
+    const input = document.getElementById("step" + step);
+
+    const answer = input.value;
+
+    const response = await fetch("/check", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            step: step,
+            answer: answer
+        })
+
+    });
+
+    const result = await response.json();
+
+    const message = document.getElementById("message" + step);
+
+    if (result.correct) {
+
+        message.innerHTML = "✅ Správně!";
+
+        message.className = "message good";
+
+        input.disabled = true;
+
+        document.getElementById("button" + step).disabled = true;
+
+        if (step < stepCount) {
+
+            document
+                .getElementById("block" + (step + 1))
+                .classList.remove("locked");
+
+            document
+                .getElementById("step" + (step + 1))
+                .disabled = false;
+
+            document
+                .getElementById("button" + (step + 1))
+                .disabled = false;
+
+        }
+
+        else {
+
+            message.innerHTML =
+                "🎉 Výborně! Příklad je hotový.";
+
+            document
+                .getElementById("nextButton")
+                .disabled = false;
+        }
+
+    }
+
+    else {
+
+        message.innerHTML =
+            "❌ Zkus upravit krok podle vzoru.";
+
+        message.className = "message bad";
+    }
+
+}
+
+async function nextExample() {
+
+    const response = await fetch("/next");
+
+    const data = await response.json();
+
+    if (data.finished) {
+
+        window.location.href = "/";
+
+    }
+
+    else {
+
+        window.location.reload();
+    }
+
+}
+
+async function resetTest() {
+
+    await fetch("/reset");
+
+    window.location.href = "/";
+
+}
+
+</script>
+
+</body>
+</html>

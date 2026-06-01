@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        Výpočet čisté mzdy
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('dane.static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<main class="layout">
+
+    <section class="hero">
+
+        <div>
+
+            <p class="badge">
+                45 minut • finanční gramotnost • mzda
+            </p>
+
+            <h1>
+                Výpočet čisté výplaty
+            </h1>
+
+            <p class="lead">
+
+                Porovnáš tři typy pracovních vztahů:
+
+                HPP,
+                DPP
+                a DPČ.
+
+                Aplikace tě pustí dál
+                pouze po správném výpočtu.
+
+            </p>
+
+            <form method="POST">
+
+                <button
+                    class="button"
+                    type="submit"
+                >
+                    Začít výpočet
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <section class="cards">
+
+        {% for task in tasks %}
+
+        <article class="card {{ task.color }}">
+
+            <div class="chip">
+                {{ task.kind }}
+            </div>
+
+            <h2>
+                {{ task.title }}
+            </h2>
+
+            <p>
+                {{ task.role }}
+            </p>
+
+            <div class="numbers">
+
+                <span>
+                    {{ task.hours }} hodin
+                </span>
+
+                <span>
+                    {{ task.rate }} Kč / hod
+                </span>
+
+            </div>
+
+            <p class="small">
+                {{ task.explain }}
+            </p>
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+    <section class="teacher-note">
+
+        <h2>
+            Co budou žáci počítat?
+        </h2>
+
+        <ol>
+
+            {% for step in steps %}
+
+            <li>
+                {{ step.label }}
+            </li>
+
+            {% endfor %}
+
+        </ol>
+
+        <p>
+
+            První správný pokus
+            = 1 bod.
+
+            Další správný pokus
+            = 0,5 bodu.
+
+        </p>
+
+    </section>
+
+</main>
+
+</body>
+
+</html>

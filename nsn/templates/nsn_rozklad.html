@@ -1,0 +1,120 @@
+{% extends "nsn_base.html" %}
+{% block content %}
+
+<div class="card">
+
+<h1>Rozklad čísel</h1>
+
+<div class="custom-box">
+
+<h2>Vlastní čísla</h2>
+
+<form method="post" class="custom-form">
+
+<input type="number"
+       name="custom_a"
+       placeholder="První číslo"
+       class="custom-input"
+       required>
+
+<input type="number"
+       name="custom_b"
+       placeholder="Druhé číslo"
+       class="custom-input"
+       required>
+
+<button type="submit"
+        name="custom"
+        value="1"
+        class="custom-button">
+Použít vlastní čísla
+</button>
+
+</form>
+
+</div>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+{% for row in rows %}
+<div class="rowbox">
+
+<b>{{ original[loop.index0] }} = </b>
+
+{% for item in row %}
+<span class="factor">{{ item.value }}</span>
+{% if not loop.last %} × {% endif %}
+{% endfor %}
+
+</div>
+{% endfor %}
+
+<h2>Vyber rozklad</h2>
+
+<div class="double-layout">
+
+<form method="post" class="block">
+
+<h3>První číslo</h3>
+
+{% for item in rows[0] %}
+<label class="choice">
+<input type="radio" name="item" value="{{ item.id }}">
+{{ item.value }}
+</label>
+{% endfor %}
+
+<input type="hidden" name="row" value="0">
+
+<h3>Dělitel</h3>
+
+<select name="divisor">
+{% for d in divisors %}
+<option value="{{ d }}">{{ d }}</option>
+{% endfor %}
+</select>
+
+<br>
+
+<button type="submit">Rozložit</button>
+
+</form>
+
+<form method="post" class="block">
+
+<h3>Druhé číslo</h3>
+
+{% for item in rows[1] %}
+<label class="choice">
+<input type="radio" name="item" value="{{ item.id }}">
+{{ item.value }}
+</label>
+{% endfor %}
+
+<input type="hidden" name="row" value="1">
+
+<h3>Dělitel</h3>
+
+<select name="divisor">
+{% for d in divisors %}
+<option value="{{ d }}">{{ d }}</option>
+{% endfor %}
+</select>
+
+<br>
+
+<button type="submit">Rozložit</button>
+
+<button class="gray" type="submit" name="finish" value="1">
+Rozklady už nejdou dál
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "scitani_base.html" %}
+{% block content %}
+
+<div class="card">
+
+<h1>Sčítání zlomků</h1>
+
+<h2>Splněno: {{ session.completed }}/10</h2>
+<h2>
+Aktuální známka:
+
+{% if session.completed >= 10 %}
+1
+{% elif session.completed >= 8 %}
+2
+{% elif session.completed >= 6 %}
+3
+{% elif session.completed >= 4 %}
+4
+{% else %}
+5
+{% endif %}
+
+</h2>
+
+<div class="fraction-line">
+
+    <div class="fraction">
+        <span>{{ a }}</span>
+        <hr>
+        <span>{{ d1 }}</span>
+    </div>
+
+    <div class="sign">+</div>
+
+    <div class="fraction">
+        <span>{{ b }}</span>
+        <hr>
+        <span>{{ d2 }}</span>
+    </div>
+
+</div>
+
+<a class="btn"href="{{ url_for('scitani.rozklad') }}">
+Najít NSN
+</a>
+
+</div>
+
+{% endblock %}

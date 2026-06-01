@@ -1,0 +1,56 @@
+{% extends "odcitani_base.html" %}
+{% block content %}
+
+<div class="card">
+
+<h1>Spočítej čitatele</h1>
+
+<h2>Splněno: {{ session.completed }}/10</h2>
+<h2>
+Aktuální známka:
+
+{% if session.completed >= 10 %}
+1
+{% elif session.completed >= 8 %}
+2
+{% elif session.completed >= 6 %}
+3
+{% elif session.completed >= 4 %}
+4
+{% else %}
+5
+{% endif %}
+
+</h2>
+
+<div class="fraction big-fraction">
+
+<span>{{ c1 }} - {{ c2 }}</span>
+
+<hr>
+
+<span>{{ nsn }}</span>
+
+</div>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="post">
+
+<input class="result-input"
+       type="text"
+       name="value">
+
+<br><br>
+
+<button class="btn" type="submit">
+Další příklad
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

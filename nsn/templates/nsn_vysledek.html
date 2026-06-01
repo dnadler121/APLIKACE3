@@ -1,0 +1,36 @@
+{% extends "nsn_base_html" %}
+
+{% block content %}
+
+<div class="card">
+
+<h1>Výborně</h1>
+
+<h2>
+Hotové příklady:
+{{ done }}/10
+</h2>
+
+<h2>
+Aktuální známka:
+{{ grade }}
+</h2>
+
+{% if done < 10 %}
+
+<a class="btn"
+   href="{{ url_for('nsn.index') }}">
+
+Další příklad
+
+</a>
+
+{% else %}
+
+<h2>Máš hotovo</h2>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

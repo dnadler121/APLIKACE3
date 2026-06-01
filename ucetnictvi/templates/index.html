@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="start-card">
+    <h1>Jedna směna v restauraci</h1>
+
+<h2>Aktuální známka: {{ grade }}</h2>
+    <p>Zaúčtuješ 20 jednoduchých operací. Aplikace tě pustí dál až po správném zařazení a výpočtu.</p>
+    <div class="info-grid">
+        <div><b>Tržba</b><br>peníze od hostů</div>
+        <div><b>Náklad</b><br>co restaurace zaplatí</div>
+        <div><b>DPH</b><br>částka pro stát</div>
+        <div><b>Zisk</b><br>tržby mínus náklady</div>
+    </div>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form method="post" class="start-form">
+        <label>Jméno studenta</label>
+        <input name="student_name" placeholder="např. David" autofocus>
+        <button>Začít směnu</button>
+    </form>
+</section>
+{% endblock %}
