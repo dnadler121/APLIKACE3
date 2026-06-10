@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Pes baskervillský</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="{{ url_for('pes.static', filename='style.css') }}">
+</head>
+<body class="intro">
+    <div class="fog"></div>
+    <div class="rain"></div>
+    <main class="intro-card">
+        <div class="badge">SHERLOCK HOLMES CASE FILE</div>
+        <h1>Pes baskervillský</h1>
+        <p class="story-intro">Detektivní čtenářská hra. Po každé správné odpovědi se odemkne další část příběhu.</p>
+        <form method="POST" class="start-form">
+            <input name="team" placeholder="Jméno týmu / dvojice" autocomplete="off">
+            <button>OTEVŘÍT SPIS</button>
+        </form>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    </main>
+</body>
+</html>

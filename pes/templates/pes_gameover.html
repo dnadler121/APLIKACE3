@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Případ uzavřen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="{{ url_for('pes.static', filename='style.css') }}">
+</head>
+<body class="gameover">
+    <main class="final-card fail">
+        <div class="badge red">CASE FAILED</div>
+        <h1>Stopy se ztratily v mlze</h1>
+        <p>Došly vám životy. Případ zůstává nevyřešen.</p>
+        <a href="{{ url_for('reset') }}" class="big-link">Začít znovu</a>
+    </main>
+</body>
+</html>

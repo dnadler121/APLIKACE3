@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Případ vyřešen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="{{ url_for('pes.static', filename='style.css') }}">
+</head>
+<body class="victory">
+
+<div class="fog"></div>
+<div class="rain"></div>
+
+<main class="final-card">
+
+    <div class="badge">CASE CLOSED</div>
+
+    <h1>PŘÍPAD VYŘEŠEN</h1>
+
+    <p>
+        Tajemství Psa baskervillského bylo odhaleno.
+    </p>
+
+    <div class="final-mega">
+        UKAŽ UČITELI
+    </div>
+
+</main>
+
+<script>
+setTimeout(() => {
+    const finalSound = new Audio("https://actions.google.com/sounds/v1/cartoon/concussive_drum_hit.ogg");
+    finalSound.volume = 0.35;
+    finalSound.play();
+}, 1500);
+</script>
+
+</body>
+</html>

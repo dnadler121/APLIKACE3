@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ chapter.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="{{ url_for('pes.static', filename='style.css') }}">
+</head>
+<body class="game">
+    <div class="fog"></div>
+    <div class="rain"></div>
+
+    <header class="hud">
+        <div>{{ team }}</div>
+        <div>KAPITOLA {{ chapter_number }}/{{ total }}</div>
+       
+    </header>
+
+    <div class="progress"><div style="width: {{ (chapter_number / total) * 100 }}%"></div></div>
+
+    <main class="case-card">
+        {% if message %}<div id="message" class="message {{ status }}">{{ message }}</div>{% endif %}
+        <h1>{{ chapter.title }}</h1>
+
+        <article id="storyText" class="story-text">
+            {% for paragraph in chapter.story.split('\n\n') %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
+        </article>
+
+        <div class="voice-controls">
+            <button type="button" id="readBtn">🔊 Číst nahlas</button>
+            <button type="button" id="stopBtn">■ Zastavit</button>
+        </div>
+
+        <section class="question-box">
+            <h2>Otázka ke stopě</h2>
+            <p>{{ chapter.question }}</p>
+            <form method="POST" class="answer-form">
+                <input name="answer" placeholder="Zadej odpověď" autocomplete="off" autofocus>
+                <button>ODEMKNOUT DALŠÍ ČÁST</button>
+            </form>
+
+            <div class="hint-wrap">
+                <button type="button" id="hintBtn" class="hint-btn">Zobrazit drobnou stopu</button>
+                <div id="hintText" class="hint-text">{{ chapter.hint }}</div>
+            </div>
+        </section>
+    </main>
+
+    <div id="unlock" class="unlock hidden"><div class="seal">STOPA ODEMČENA</div></div>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
