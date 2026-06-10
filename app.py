@@ -6,6 +6,7 @@ from nsn.routes import nsn_bp
 from scitani.routes import scitani_bp
 from odcitani.routes import odcitani_bp
 from gastro.routes import gastro_bp
+from pes.routes import pes_bp
 
 app = Flask(__name__)
 app.secret_key = "tajny_klic"
@@ -17,6 +18,7 @@ app.register_blueprint(nsn_bp, url_prefix="/nsn")
 app.register_blueprint(scitani_bp, url_prefix="/scitani")
 app.register_blueprint(odcitani_bp, url_prefix="/odcitani")
 app.register_blueprint(gastro_bp, url_prefix="/gastro")
+app.register_blueprint(pes_bp, url_prefix="/pes")
 
 @app.route("/")
 def menu():
