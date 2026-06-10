@@ -17,7 +17,12 @@ def product(items):
     return reduce(mul, items, 1)
 
 def make_item(value, next_id):
-    return {"id": next_id, "value": value, "crossed": False}
+    return {
+        "id": next_id,
+        "value": value,
+        "crossed": False,
+        "used": False
+    }
 
 def generate_example():
 
@@ -189,17 +194,39 @@ def skrtani():
 
         if request.form.get("done"):
 
-            final=[]
+            lze_skrtat = False
 
-            for row in rows:
-                for item in row:
-                    if not item["crossed"]:
-                        final.append(item["value"])
+            for item_a in rows[0]:
 
-            session["final"] = final
+                if item_a.get("used", False):
+                    continue
 
-            return redirect(url_for("odcitani.citatele"))
+                for item_b in rows[1]:
 
+                    if item_b.get("crossed", False):
+                        continue
+
+                    if item_a["value"] == item_b["value"]:
+                        lze_skrtat = True
+
+            if lze_skrtat:
+
+                error = "Ještě můžeš něco vyškrtnout."
+
+            else:
+
+                final = []
+
+                for row in rows:
+
+                    for item in row:
+
+                        if not item["crossed"]:
+                            final.append(item["value"])
+
+                session["final"] = final
+
+                return redirect(url_for("odcitani.citatele"))
         try:
             a = int(request.form["a"])
             b = int(request.form["b"])
@@ -213,21 +240,26 @@ def skrtani():
             item_b = None
 
             for item in rows[0]:
+
                 if item["id"] == a:
                     item_a = item
 
             for item in rows[1]:
+
                 if item["id"] == b:
                     item_b = item
 
-            if item_b["crossed"]:
+            if item_a.get("used", False) or item_b.get("crossed", False):
+
                 error = "Toto číslo už bylo vyškrtnuté."
 
             elif item_a["value"] != item_b["value"]:
+
                 error = "Škrtat můžeš jen stejná čísla."
 
             else:
 
+                item_a["used"] = True
                 item_b["crossed"] = True
 
                 session["rows"] = rows

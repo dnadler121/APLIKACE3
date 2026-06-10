@@ -192,7 +192,11 @@ def setup():
 @ucetnictvi_bp.route("/", methods=["GET", "POST"])
 def index():
 
-    session["completed"] = 0
+    if session.get("attempt_id"):
+        return redirect(url_for("ucetnictvi.game"))
+
+    if "completed" not in session:
+        session["completed"] = 0
 
     if request.method == "POST":
 

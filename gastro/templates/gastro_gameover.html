@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Konec hry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet"href="{{ url_for('gastro.static', filename='style.css') }}">
+</head>
+<body class="gameover">
+    <div class="noise"></div>
+    <div class="victory-screen fail">
+        <div class="badge red">SYSTEM LOCKED</div>
+        <h1>KONEC HRY</h1>
+        <p>{{ reason }}</p>
+        <p>Dosažená místnost: {{ room }}</p>
+        <a class="big-link" href="{{ url_for('reset') }}">Zkusit znovu</a>
+    </div>
+</body>
+</html>

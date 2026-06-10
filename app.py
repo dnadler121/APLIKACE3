@@ -5,6 +5,7 @@ from dane.routes import dane_bp
 from nsn.routes import nsn_bp
 from scitani.routes import scitani_bp
 from odcitani.routes import odcitani_bp
+from gastro.routes import gastro_bp
 
 app = Flask(__name__)
 app.secret_key = "tajny_klic"
@@ -15,6 +16,7 @@ app.register_blueprint(dane_bp, url_prefix="/dane")
 app.register_blueprint(nsn_bp, url_prefix="/nsn")
 app.register_blueprint(scitani_bp, url_prefix="/scitani")
 app.register_blueprint(odcitani_bp, url_prefix="/odcitani")
+app.register_blueprint(gastro_bp, url_prefix="/gastro")
 
 @app.route("/")
 def menu():

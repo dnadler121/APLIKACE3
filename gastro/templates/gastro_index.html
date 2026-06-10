@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Gastro Escape</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet"href="{{ url_for('gastro.static', filename='style.css') }}">
+</head>
+<body class="intro">
+    <div class="noise"></div>
+    <div class="smoke"></div>
+    <main class="intro-card">
+        <div class="badge">SMART RESTAURANT SYSTEM</div>
+        <h1>GASTRO ESCAPE</h1>
+        <p class="story">
+            Chytrá restaurace se zasekla. Objednávky stojí, pokladna mlčí,
+            sklad hlásí alarm a za 50 minut dorazí kontrola.
+        </p>
+        <p class="rules">25 místností · 3 životy · 50 minut · gastro escape room</p>
+        <form method="POST" class="start-form">
+            <input name="team" placeholder="Název týmu" autocomplete="off">
+            <button>VSTOUPIT DO RESTAURACE</button>
+        </form>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    </main>
+</body>
+</html>

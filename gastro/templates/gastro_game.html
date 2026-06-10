@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ room.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet"href="{{ url_for('gastro.static', filename='style.css') }}">
+</head>
+<body class="game">
+    <div class="noise"></div>
+    <div class="alarm-light"></div>
+    <header class="hud">
+        <div class="hud-box">TÝM <strong>{{ team }}</strong></div>
+        <div class="hud-box">ROOM <strong>{{ room_number }}/{{ total_rooms }}</strong></div>
+        <div class="hud-box hearts">{% for i in range(lives) %}❤️{% endfor %}</div>
+        <div class="hud-box timer" id="timer" data-seconds="{{ remaining }}">--:--</div>
+    </header>
+    <div class="progress"><div style="width: {{ (room_number / total_rooms) * 100 }}%"></div></div>
+
+    <main class="room">
+        {% if flash %}
+            <div id="flash" class="flash {{ flash_type }}">{{ flash }}</div>
+        {% endif %}
+
+        <div class="zone">{{ room.zone }}</div>
+        <div class="ai">AI CHEF: {{ room.ai }}</div>
+
+        <section class="scene">
+            <h1>{{ room.title }}</h1>
+            <p>{{ room.scene }}</p>
+        </section>
+
+        <section class="terminal">
+            {% for line in room.panel %}
+                <div class="line">{{ line }}</div>
+            {% endfor %}
+        </section>
+
+        <section class="task">{{ room.task }}</section>
+
+        <form method="POST" id="answerForm" class="answer-form">
+            <input name="answer" placeholder="Zadej kód / stopu" autocomplete="off" autofocus>
+            <button>ODEMKNOUT</button>
+        </form>
+
+        <div class="hint-wrap">
+            <button type="button" id="hintButton" class="hint-button">ZOBRAZIT STOPU</button>
+            <div id="hintText" class="hint-text">{{ room.hint }}</div>
+        </div>
+    </main>
+
+    <div id="successTransition" class="success-transition hidden">
+        <div class="door door-left"></div>
+        <div class="door door-right"></div>
+        <div class="granted">ACCESS GRANTED</div>
+    </div>
+
+    <script src="{{ url_for('gastro.static', filename='game.js') }}"></script>
+</body>
+</html>

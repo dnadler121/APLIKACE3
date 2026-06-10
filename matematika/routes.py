@@ -42,6 +42,13 @@ def equation_to_expression(eq):
 def kontrola(uzivatel, spravne):
     uzivatel = uzivatel.replace("inf", "∞")
     spravne = spravne.replace("inf", "∞")
+    # prázdná množina
+    uzivatel = uzivatel.replace("∅", "nic")
+    spravne = spravne.replace("∅", "nic")
+
+    # sjednocení intervalů
+    uzivatel = uzivatel.replace("∪", ",")
+    spravne = spravne.replace("∪", ",")
 
     uzivatel = normalize(uzivatel)
     spravne = normalize(spravne)
@@ -446,6 +453,8 @@ def home():
 
     session["uloha"] = 0
 
+    session["correct_examples"] = 0
+
     session["ulohy"] = vytvor_ulohy()
 
     return redirect("matematika/")
@@ -460,9 +469,30 @@ def matematika():
 
     if index >= len(ulohy):
 
+        total = len(ulohy)
+
+        correct = session.get("correct_examples", 0)
+
+        if correct >= 4:
+            znamka = 1
+
+        elif correct == 3:
+            znamka = 2
+
+        elif correct == 2:
+            znamka = 3
+
+        elif correct == 1:
+            znamka = 4
+
+        else:
+            znamka = 5
+
         return render_template(
             "matematika_finish.html",
-            total=len(ulohy)
+            total=total,
+            correct=correct,
+            znamka=znamka
         )
 
     uloha = ulohy[index]
@@ -508,21 +538,44 @@ def matematika():
 
         }
 
+    correct = session.get("correct_examples", 0)
+
+    if correct >= 4:
+        znamka = 1
+
+    elif correct == 3:
+        znamka = 2
+
+    elif correct == 2:
+        znamka = 3
+
+    elif correct == 1:
+        znamka = 4
+
+    else:
+        znamka = 5
+
     return render_template(
         "matematika_matematika.html",
         example=example,
         current=index + 1,
-        total=len(ulohy)
+        total=len(ulohy),
+        correct=correct,
+        znamka=znamka
     )
 
 
 @matematika_bp.route("/check", methods=["POST"])
 def check():
 
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
-    step = data["step"] - 1
-    answer = data["answer"]
+    if data:
+        step = int(data["step"]) - 1
+        answer = data["answer"]
+    else:
+        step = int(request.form.get("step")) - 1
+        answer = request.form.get("answer")
 
     index = session.get("uloha", 0)
     ulohy = session.get("ulohy", [])
@@ -585,6 +638,8 @@ def check():
 
 @matematika_bp.route("/next/")
 def next_example():
+
+    session["correct_examples"] += 1
 
     session["uloha"] += 1
 
