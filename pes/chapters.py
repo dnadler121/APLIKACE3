@@ -196,7 +196,7 @@ CHAPTERS = [
         "title": "Sir Charles",
         "story": "Před začátkem příběhu zemřel sir Charles Baskerville.",
         "question": "Kdo zemřel před začátkem příběhu?",
-        "answers": ["Charles"],
+        "answers": ["sir Charles Baskerville"],
         "hint": "Sir ... Baskerville."
     },
 
