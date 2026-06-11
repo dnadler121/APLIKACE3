@@ -124,7 +124,7 @@ CHAPTERS = [
         "title": "Obrovský pes",
         "story": "Z mlhy se vyřítil obrovský pes se žhnoucíma očima. Vypadal jako démon.",
         "question": "Jak vypadal pes?",
-        "answers": ["démon"],
+        "answers": ["jako démon"],
         "hint": "Pekelně."
     },
 
