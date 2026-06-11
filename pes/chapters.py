@@ -28,7 +28,7 @@ CHAPTERS = [
         "title": "Nový dědic",
         "story": "Do Anglie přijel nový dědic panství, sir Henry Baskerville. Přicestoval z Kanady a chtěl převzít rodové sídlo.",
         "question": "Odkud přijel sir Henry?",
-        "answers": ["Kanady"],
+        "answers": ["z Kanady"],
         "hint": "Přijel ze zámoří."
     },
 
@@ -44,7 +44,7 @@ CHAPTERS = [
         "title": "Ztracený bot",
         "story": "V hotelu se stala zvláštní věc. Siru Henrymu zmizela jedena z bot. Holmes začal být ještě podezřívavější.",
         "question": "Co se ztratilo v hotelu?",
-        "answers": ["Boty"],
+        "answers": ["Bota"],
         "hint": "Jen jedna věc."
     },
 
@@ -92,7 +92,7 @@ CHAPTERS = [
         "title": "Berylino varování",
         "story": "Stapletonova sestra Beryl tajně varovala sira Henryho. Prosila ho, aby okamžitě odjel pryč.",
         "question": "Co radila Beryl siru Henrymu?",
-        "answers": ["Odjeďte"],
+        "answers": ["Odjetí"],
         "hint": "Chtěla, aby odjel."
     },
 
@@ -156,7 +156,7 @@ CHAPTERS = [
         "title": "Nebezpečná blata",
         "story": "Stapleton utekl do blat, ale zmizel v mlze a močálu.",
         "question": "Kde zmizel Stapleton?",
-        "answers": ["mlze"],
+        "answers": ["v mlze"],
         "hint": "Nebezpečné místo."
     },
 
@@ -180,7 +180,7 @@ CHAPTERS = [
         "title": "Rodové prokletí",
         "story": "Místní lidé věřili, že rod Baskervillů je prokletý.",
         "question": "Čemu věřili místní lidé?",
-        "answers": ["Prokle"],
+        "answers": ["Prokletí"],
         "hint": "Legenda rodu."
     },
 
@@ -204,7 +204,7 @@ CHAPTERS = [
         "title": "Podezřelé chování",
         "story": "Barrymore se choval podezřele hlavně v noci.",
         "question": "Kdy se Barrymore choval podezřele?",
-        "answers": ["noci"],
+        "answers": ["v noci"],
         "hint": "Po setmění."
     },
 
