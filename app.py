@@ -12,6 +12,7 @@ from ucitel.routes import ucitel_bp
 from algebra.routes import algebra_bp
 from intervaly.routes import intervaly_bp
 from nerovnice.routes import nerovnice_bp
+from kvadraticke.routes import kvadraticke_bp
 
 
 app = Flask(__name__)
@@ -30,6 +31,7 @@ app.register_blueprint(ucitel_bp, url_prefix="/ucitel")
 app.register_blueprint(algebra_bp, url_prefix="/algebra")
 app.register_blueprint(intervaly_bp, url_prefix="/intervaly")
 app.register_blueprint(nerovnice_bp, url_prefix="/nerovnice")
+app.register_blueprint(kvadraticke_bp, url_prefix="/kvadraticke")
 
 
 @app.route("/")

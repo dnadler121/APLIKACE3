@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kvadratické rovnice</title>
+<link rel="stylesheet"href="{{ url_for('kvadraticke.static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<div class="topbar">
+<div>
+<h1>Kvadratické rovnice</h1>
+<p>Urči koeficienty a, b, c, spočítej diskriminant a najdi oba kořeny.</p>
+</div>
+<div class="progress">{{ current }} / {{ total }}<br>Správně: {{ correct }}<br>Známka: {{ znamka }}</div>
+</div>
+
+<div class="equation-box">{{ example.zadani }}</div>
+
+<div class="example-box">
+<h2>Postup řešení</h2>
+<p><strong>1.</strong> Určíme koeficienty <strong>a, b, c</strong>.</p>
+<p><strong>2.</strong> Spočítáme diskriminant: <strong>D = b² - 4ac</strong>.</p>
+<p><strong>3.</strong> Spočítáme odmocninu: <strong>√D</strong>.</p>
+<p><strong>4.</strong> Spočítáme větší kořen: <strong>x₁ = (-b + √D) / 2a</strong>.</p>
+<p><strong>5.</strong> Spočítáme menší kořen: <strong>x₂ = (-b - √D) / 2a</strong>.</p>
+</div>
+
+{% for step in example.steps %}
+<div class="step-box {% if not loop.first %}locked{% endif %}" id="block{{ loop.index }}">
+<h2>{{ step.title }}</h2>
+<div class="mini-vzor">Vzor: {{ step.vzor }}</div>
+<div class="step-hint">✏️ {{ step.hint }}</div>
+<div class="answer-row">
+<input type="text" id="step{{ loop.index }}" {% if not loop.first %}disabled{% endif %} autocomplete="off" placeholder="Doplň odpověď">
+<button onclick="checkStep({{ loop.index }})" id="button{{ loop.index }}" {% if not loop.first %}disabled{% endif %}>Kontrola</button>
+</div>
+<p class="message" id="message{{ loop.index }}"></p>
+</div>
+{% endfor %}
+
+<div class="footer-buttons">
+<button onclick="nextExample()" id="nextButton" disabled>Další příklad</button>
+<button onclick="resetTest()" class="secondary">Začít znovu</button>
+</div>
+</div>
+
+<script>
+const stepCount = {{ example.steps|length }};
+async function checkStep(step){
+    const response = await fetch("/kvadraticke/check", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({step:step, answer:document.getElementById("step"+step).value})
+    });
+    const result = await response.json();
+    const msg = document.getElementById("message"+step);
+
+    if(result.correct){
+        msg.innerHTML="✅ Správně!";
+        msg.className="message good";
+        document.getElementById("step"+step).disabled=true;
+        document.getElementById("button"+step).disabled=true;
+
+        if(step < stepCount){
+            document.getElementById("block"+(step+1)).classList.remove("locked");
+            document.getElementById("step"+(step+1)).disabled=false;
+            document.getElementById("button"+(step+1)).disabled=false;
+            document.getElementById("step"+(step+1)).focus();
+        }else{
+            msg.innerHTML="🎉 Rovnice je vyřešena!";
+            document.getElementById("nextButton").disabled=false;
+        }
+    }else{
+        msg.innerHTML="❌ Zkus to ještě upravit.";
+        msg.className="message bad";
+    }
+}
+async function nextExample(){
+    const r = await fetch("/kvadraticke/next/");
+    const data = await r.json();
+    if(data.finished){ window.location.href="/kvadraticke/"; }
+    else{ window.location.reload(); }
+}
+async function resetTest(){
+    await fetch("/kvadraticke/reset/");
+    window.location.href="/";
+}
+</script>
+</body>
+</html>
