@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Otázka {{ number }}</title>
+    <link rel="stylesheet"href="{{ url_for('kviz.static', filename='style.css') }}">
+</head>
+<body>
+    <div class="game-layout">
+        <aside class="sidebar">
+            <div class="logo">🔐 Escape</div>
+            <p>Otázka <strong>{{ number }}</strong> / {{ total }}</p>
+            <div class="progress">
+                <div class="progress-bar" style="width: {{ progress }}%"></div>
+            </div>
+
+            <div class="stat">✅ Skóre: {{ score }}</div>
+            <div class="stat">❌ Chyby: {{ wrong }}</div>
+            <div class="stat">🔁 Pokusy: {{ attempts }}</div>
+
+            <a class="small-link" href="{{ url_for('skip') }}">Nouzově přeskočit</a>
+        </aside>
+
+        <main class="card question-card">
+            <div class="room-title">🚪 Zamčené dveře {{ number }}</div>
+            <h1>{{ item.q }}</h1>
+
+            <form method="POST" autocomplete="off">
+                <input name="answer" autofocus placeholder="Napiš odpověď">
+                <button class="btn" type="submit">🔓 Otevřít dveře</button>
+            </form>
+
+            {% if message %}
+                <div class="message error">{{ message }}</div>
+            {% endif %}
+
+            {% if show_hint %}
+                <div class="hint">💡 Nápověda: {{ item.hint }}</div>
+            {% endif %}
+
+            <p class="note">Odpovědi nejsou v HTML kódu. Kontroluje je Flask na serveru.</p>
+        </main>
+    </div>
+</body>
+</html>

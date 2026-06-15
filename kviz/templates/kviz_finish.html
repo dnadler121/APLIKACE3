@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Konec hry</title>
+    <link rel="stylesheet"href="{{ url_for('kviz.static', filename='style.css') }}">
+</head>
+<body class="intro-page">
+    <div class="stars"></div>
+    <main class="card hero">
+        <div class="badge">🔓 ÚNIK DOKONČEN</div>
+        <h1>{{ title }}</h1>
+
+        <div class="result">
+            <div><strong>{{ score }}/{{ total }}</strong><span>správně</span></div>
+            <div><strong>{{ percent }} %</strong><span>úspěšnost</span></div>
+            <div><strong>{{ grade }}</strong><span>známka</span></div>
+        </div>
+
+        <p class="lead">Restaurace přežila noční směnu. Počet chybných pokusů: {{ wrong }}.</p>
+        <a href="{{ url_for('index') }}" class="btn">🔁 Hrát znovu</a>
+    </main>
+</body>
+</html>

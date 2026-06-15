@@ -13,6 +13,7 @@ from algebra.routes import algebra_bp
 from intervaly.routes import intervaly_bp
 from nerovnice.routes import nerovnice_bp
 from kvadraticke.routes import kvadraticke_bp
+from kviz.routes import kviz_bp
 
 
 app = Flask(__name__)
@@ -32,6 +33,7 @@ app.register_blueprint(algebra_bp, url_prefix="/algebra")
 app.register_blueprint(intervaly_bp, url_prefix="/intervaly")
 app.register_blueprint(nerovnice_bp, url_prefix="/nerovnice")
 app.register_blueprint(kvadraticke_bp, url_prefix="/kvadraticke")
+app.register_blueprint(kviz_bp, url_prefix="/kviz")
 
 
 @app.route("/")

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Matematický Escape kvíz</title>
+    <link rel="stylesheet"href="{{ url_for('kviz.static', filename='style.css') }}">
+</head>
+<body class="intro-page">
+    <div class="stars"></div>
+    <main class="card hero">
+        <div class="badge">🍔 GASTRO ESCAPE</div>
+        <h1>Matematický kvíz</h1>
+        <p class="lead">
+            Restaurace se zamkla po zavíračce. Každá správná odpověď otevírá další dveře.
+            Otázky jsou logické, krátké a nejsou zbytečně těžké.
+        </p>
+
+        <div class="info-grid">
+            <div><strong>{{ total }}</strong><span>otázek</span></div>
+            <div><strong>server</strong><span>kontrola odpovědí</span></div>
+            <div><strong>hra</strong><span>body a známka</span></div>
+        </div>
+
+        <a href="{{ url_for('start') }}" class="btn">▶️ Spustit hru</a>
+    </main>
+</body>
+</html>
