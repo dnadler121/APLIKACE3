@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="layout">
+    <section class="main-card">
+        <div class="progress-label">Operace {{ step + 1 }} / {{ total_steps }}</div>
+        <div class="progress"><div style="width: {{ (step / total_steps * 100)|round(0) }}%"></div></div>
+        <h1>Zaúčtuj operaci</h1>
+
+<h2>Aktuální známka: {{ grade }}</h2>
+        <div class="operation">{{ operation_text }}</div>
+
+        <form method="post" class="account-form">
+            <label>Kam to patří?</label>
+            <div class="choice-row">
+                <label class="choice"><input type="radio" name="category" value="trzba" {% if values.category == 'trzba' %}checked{% endif %}> Tržba</label>
+                <label class="choice"><input type="radio" name="category" value="naklad" {% if values.category == 'naklad' %}checked{% endif %}> Náklad</label>
+            </div>
+
+            <div class="fields">
+                <label>Částka bez DPH<input name="net" value="{{ values.net or '' }}" inputmode="numeric"></label>
+                <label>DPH<input name="vat" value="{{ values.vat or '' }}" inputmode="numeric"></label>
+                <label>Celkem<input name="gross" value="{{ values.gross or '' }}" inputmode="numeric"></label>
+            </div>
+            <button>Zkontrolovat a pokračovat</button>
+        </form>
+
+        {% if errors %}
+        <div class="errors">
+            {% for e in errors %}<p>❌ {{ e }}</p>{% endfor %}
+        </div>
+        {% endif %}
+
+        <p class="hint">Nápověda: pokud je uvedeno „bez DPH“, dopočítej DPH a celkem. Pokud je uvedeno „včetně DPH“, částka celkem už je v textu.</p>
+    </section>
+
+    <aside class="side">
+        <div class="panel">
+            <h2>Malá rozvaha</h2>
+            <table>
+                <tr><td>Počáteční peníze</td><td>{{ totals.start_cash }} Kč</td></tr>
+                <tr><td>Peníze nyní</td><td>{{ totals.cash }} Kč</td></tr>
+                <tr><td>DPH k odvodu</td><td>{{ totals.vat_due }} Kč</td></tr>
+            </table>
+        </div>
+        <div class="panel">
+            <h2>Výkaz zisků a ztrát</h2>
+            <table>
+                <tr><td>Tržby bez DPH</td><td>{{ totals.revenues }} Kč</td></tr>
+                <tr><td>Náklady bez DPH</td><td>{{ totals.expenses }} Kč</td></tr>
+                <tr class="strong"><td>Zisk / ztráta</td><td>{{ totals.profit }} Kč</td></tr>
+            </table>
+        </div>
+        <div class="panel small">
+            <h2>Hotovo</h2>
+            <p>{{ entries|length }} z {{ total_steps }} operací</p>
+        </div>
+    </aside>
+</div>
+{% endblock %}

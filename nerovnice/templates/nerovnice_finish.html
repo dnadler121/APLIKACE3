@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotovo</title>
+    <link rel="stylesheet"href="{{ url_for('nerovnice.static', filename='style.css') }}">
+</head>
+<body>
+
+<main class="page finish">
+    <section class="finish-card">
+        <h1>🎉 Hotovo</h1>
+        <div class="score">Správně: {{ score }} / {{ total }}</div>
+        <div class="grade">Známka: {{ grade }}</div>
+        <a href="{{ url_for('nerovnice.restart') }}">
+            <button>Začít znovu</button>
+        </a>
+    </section>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+{% extends "odcitani_base.html" %}
+{% block content %}
+
+<div class="card">
+
+<h1>Najdi NSN jmenovatelů</h1>
+
+<h2>Splněno: {{ session.completed }}/10</h2>
+<h2>
+Aktuální známka:
+
+{% if session.completed >= 10 %}
+1
+{% elif session.completed >= 8 %}
+2
+{% elif session.completed >= 6 %}
+3
+{% elif session.completed >= 4 %}
+4
+{% else %}
+5
+{% endif %}
+
+</h2>
+
+<div class="fraction-line">
+
+    <div class="fraction">
+        <span>{{ a }}</span>
+        <hr>
+        <span>{{ d1 }}</span>
+    </div>
+
+    <div class="sign">−</div>
+
+    <div class="fraction">
+        <span>{{ b }}</span>
+        <hr>
+        <span>{{ d2 }}</span>
+    </div>
+
+</div>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+{% for row in rows %}
+<div class="rowbox">
+
+<b>{{ original[loop.index0] }} = </b>
+
+{% for item in row %}
+<span class="factor">{{ item.value }}</span>
+{% if not loop.last %} × {% endif %}
+{% endfor %}
+
+</div>
+{% endfor %}
+
+<div class="double-layout">
+
+<form method="post" class="block">
+
+<h3>První číslo</h3>
+
+{% for item in rows[0] %}
+<label class="choice">
+<input type="radio" name="item" value="{{ item.id }}">
+{{ item.value }}
+</label>
+{% endfor %}
+
+<input type="hidden" name="row" value="0">
+
+<select name="divisor">
+{% for d in divisors %}
+<option value="{{ d }}">{{ d }}</option>
+{% endfor %}
+</select>
+
+<br><br>
+
+<button type="submit">
+Rozložit
+</button>
+
+</form>
+
+<form method="post" class="block">
+
+<h3>Druhé číslo</h3>
+
+{% for item in rows[1] %}
+<label class="choice">
+<input type="radio" name="item" value="{{ item.id }}">
+{{ item.value }}
+</label>
+{% endfor %}
+
+<input type="hidden" name="row" value="1">
+
+<select name="divisor">
+{% for d in divisors %}
+<option value="{{ d }}">{{ d }}</option>
+{% endfor %}
+</select>
+
+<br><br>
+
+<button type="submit">
+Rozložit
+</button>
+
+<button class="gray" type="submit" name="finish" value="1">
+Rozklady už nejdou dál
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Výpočet mzdy</title>
+    <link rel="stylesheet"href="{{ url_for('dane.static', filename='style.css') }}">
+</head>
+<body>
+
+<main class="layout narrow">
+
+    <div class="topbar">
+
+        <div>
+            <b>Pracovní vztah {{ task_index + 1 }}/{{ total_tasks }}</b>
+            <span>{{ task.title }}</span>
+        </div>
+
+        <div>
+            {{ done_steps }}/{{ total_steps }} kroků
+        </div>
+
+    </div>
+
+    <div class="progress">
+        <div style="width: {{ progress }}%"></div>
+    </div>
+
+    <h2 style="
+        color:white;
+        text-align:center;
+        margin-top:15px;
+        margin-bottom:15px;
+        font-size:32px;
+    ">
+        Aktuální známka: {{ current_grade }}
+    </h2>
+
+    <section class="work-card {{ task.color }}">
+
+        <div class="chip">{{ task.kind }}</div>
+
+        <h1>{{ step.question }}</h1>
+
+        <div class="scenario">
+
+            <p><b>Situace:</b> {{ task.role }}</p>
+
+            <p>
+                <b>Počet hodin:</b>
+                {{ task.hours }}
+            </p>
+
+            <p>
+                <b>Hodinová mzda:</b>
+                {{ task.rate }} Kč
+            </p>
+
+            <p class="small">
+                {{ task.explain }}
+            </p>
+
+        </div>
+
+        <div class="hint">
+
+            <h3>Nápověda</h3>
+
+            <p>{{ step.hint }}</p>
+
+            <p>
+                Limity pro úlohu:
+                DPP {{ dpp_limit }} Kč,
+                DPČ {{ dpc_limit }} Kč,
+                sleva na poplatníka {{ tax_discount }} Kč.
+            </p>
+
+        </div>
+
+        {% if step_index > 0 %}
+
+        <div class="already">
+
+            <h3>Už vypočítané hodnoty</h3>
+
+            <div class="grid">
+
+                <span>Hrubý příjem</span>
+                <b>{{ task.gross }} Kč</b>
+
+                {% if step_index > 1 %}
+                <span>Sociální</span>
+                <b>{{ task.social }} Kč</b>
+                {% endif %}
+
+                {% if step_index > 2 %}
+                <span>Zdravotní</span>
+                <b>{{ task.health }} Kč</b>
+                {% endif %}
+
+                {% if step_index > 3 %}
+                <span>Daň před slevou</span>
+                <b>{{ task.tax_before_discount }} Kč</b>
+                {% endif %}
+
+                {% if step_index > 4 %}
+                <span>Daň po slevě</span>
+                <b>{{ task.tax_after_discount }} Kč</b>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <form method="post" class="answer-form">
+
+            <label for="answer">
+                Tvoje odpověď v Kč
+            </label>
+
+            <input
+                id="answer"
+                name="answer"
+                type="number"
+                required
+                autofocus
+                placeholder="např. 12500"
+            >
+
+            <button type="submit">
+                Zkontrolovat a pokračovat
+            </button>
+
+        </form>
+
+        {% if error %}
+
+        <div class="error">
+
+            Ještě ne. Zkontroluj postup v nápovědě a zkus to znovu.
+
+            {% if attempts >= 2 %}
+
+            <br>
+
+            <b>Pomůcka:</b>
+            Zaokrouhluj na celé Kč.
+
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+</body>
+</html>

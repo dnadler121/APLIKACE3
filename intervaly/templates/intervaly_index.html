@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Intervaly</title>
+<link rel="stylesheet"href="{{ url_for('intervaly.static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>📐 Intervaly</h1>
+
+<div class="counter">
+Příklad {{ current }} / 10
+</div>
+
+<div class="task">
+Urči <strong>{{ example.operation }}</strong>
+</div>
+
+<div class="boxes">
+
+<div class="box blue">
+A = {{ example.A.left }}{{ example.A.a }}; {{ example.A.b }}{{ example.A.right }}
+</div>
+
+<div class="box purple">
+B = {{ example.B.left }}{{ example.B.a }}; {{ example.B.b }}{{ example.B.right }}
+</div>
+
+</div>
+
+<div class="legend">
+
+<div><span class="h"></span> Interval A</div>
+<div><span class="v"></span> Interval B</div>
+<div><span class="c"></span> Překrytí</div>
+
+</div>
+
+<div class="controls">
+
+<button id="drawA" class="active">Kreslím A</button>
+<button id="drawB">Kreslím B</button>
+<button id="clear">Vymazat</button>
+
+</div>
+
+<div class="axis" id="axis">
+
+<div id="intervalA" class="intervalA hidden"></div>
+<div id="intervalB" class="intervalB hidden"></div>
+<div id="overlap" class="overlap hidden"></div>
+
+<div class="line"></div>
+
+{% for n in range(-10,11) %}
+
+<div class="tick"
+     data-value="{{ n }}"
+     style="left: {{ (n+10)*5 }}%;">
+
+<div class="tickline"></div>
+<div class="label">{{ n }}</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<form method="post" class="answerForm">
+
+<input type="text"
+       name="answer"
+       placeholder="např. [1; 4)"
+       required
+       autocomplete="off">
+
+<button type="submit">
+Zkontrolovat
+</button>
+
+</form>
+
+{% if message %}
+<div class="message">
+{{ message }}
+</div>
+{% endif %}
+
+</div>
+
+<script src="{{ url_for('intervaly.static', filename='script.js') }}"></script>
+
+</body>
+</html>

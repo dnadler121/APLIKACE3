@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotovo</title>
+<link rel="stylesheet"href="{{ url_for('rovnicejmenovatel.static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="finish-card">
+
+<h1>🎉 Hotovo!</h1>
+
+<p>
+Student splnil všechny rovnice s neznámou ve jmenovateli.
+</p>
+
+<h2>Správně: {{ correct }} / {{ total }}</h2>
+<h2>Úspěšnost: {{ procenta }} %</h2>
+<h2>Známka: {{ znamka }}</h2>
+
+<button onclick="resetTest()">
+Začít znovu
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+async function resetTest(){
+    await fetch("/reset/");
+    window.location.href="/rovnice/";
+}
+
+</script>
+
+</body>
+</html>

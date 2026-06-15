@@ -1,0 +1,119 @@
+body{
+    margin:0;
+    padding:0;
+
+    font-family: 'Segoe UI', sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+
+    overflow:hidden;
+}
+
+.container{
+    width:100%;
+    text-align:center;
+}
+
+h1{
+    color:white;
+
+    font-size:80px;
+
+    margin-bottom:70px;
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,0.3),
+    0 0 40px rgba(59,130,246,0.5);
+
+    letter-spacing:3px;
+}
+
+.menu{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:40px;
+
+    width:100%;
+}
+
+.menu a{
+    text-decoration:none;
+}
+
+button{
+
+    width:320px;
+
+    height:220px;
+
+    border:none;
+
+    border-radius:35px;
+
+    font-size:38px;
+
+    font-weight:bold;
+
+    color:white;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(145deg,
+    rgba(255,255,255,0.18),
+    rgba(255,255,255,0.08));
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.4),
+    inset 0 0 15px rgba(255,255,255,0.15);
+
+    transition:0.35s;
+}
+
+button:hover{
+
+    transform:
+    translateY(-15px)
+    scale(1.08);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.5),
+    0 0 40px rgba(59,130,246,0.7);
+
+    background:
+    linear-gradient(145deg,
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0.12));
+}
+
+button:active{
+    transform:scale(0.98);
+}
+
+@media(max-width:1000px){
+
+    h1{
+        font-size:50px;
+    }
+
+    button{
+        width:240px;
+        height:170px;
+        font-size:28px;
+    }
+}

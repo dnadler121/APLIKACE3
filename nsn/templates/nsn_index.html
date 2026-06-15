@@ -1,0 +1,29 @@
+{% extends "nsn_base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+<h1>NSN interaktivně</h1>
+
+<h2>{{ a }} a {{ b }}</h2>
+
+<a class="btn"
+   href="{{ url_for('nsn.rozklad') }}">
+
+Začít
+
+</a>
+
+<br><br>
+
+<a class="big-link"
+   href="{{ url_for('nsn.rozklad') }}">
+
+Vlastní čísla
+
+</a>
+
+</div>
+
+{% endblock %}

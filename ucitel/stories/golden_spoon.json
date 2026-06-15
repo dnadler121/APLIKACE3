@@ -1,0 +1,395 @@
+{
+  "title": "Nový učitel",
+  "chapters": [
+    {
+      "id": 1,
+      "story": "Ve škole se o něm mluvilo už od srpna. Prý přijde nový učitel. Starší sympaťák. Když vešel do třídy, položil kafe na stůl a řekl: 'Tak kdo mě dneska psychicky zničí jako první?' Půlka třídy se rozesmála.",
+      "question": "Co položil nový učitel na stůl?",
+      "answer": "kaf",
+      "hints": [
+        "Bylo to v hrnku.",
+        "Pil to ráno.",
+        "Není to čaj.",
+        "Učitelé bez toho nepřežijí pondělí.",
+        "Byla to káva."
+      ]
+    },
+    {
+      "id": 2,
+      "story": "Třída měla pověst jedné z nejhorších na škole. Jenže nový učitel nekřičel. Místo toho vytáhl mobil a spustil matematickou hru.",
+      "question": "Co vytáhl učitel během hodiny?",
+      "answer": "mob",
+      "hints": [
+        "Měl to v kapse.",
+        "Používají to studenti pořád.",
+        "Dá se na tom hrát.",
+        "Byla to elektronika.",
+        "Byl to mobil."
+      ]
+    },
+    {
+      "id": 3,
+      "story": "Po dvaceti minutách se studenti nehádali kvůli penálům, ale kvůli výsledkům příkladů.",
+      "question": "Kvůli čemu se studenti hádali?",
+      "answer": "výs",
+      "hints": [
+        "Souviselo to s matematikou.",
+        "Nebyl to penál.",
+        "Byly to odpovědi.",
+        "Bylo to z příkladů.",
+        "Byly to výsledky."
+      ]
+    },
+    {
+      "id": 4,
+      "story": "Ve středu po obědě začala škola hučet. Siréna nepřestávala a na chodbách začal chaos.",
+      "question": "Co začalo ve škole houkat?",
+      "answer": "sir",
+      "hints": [
+        "Bylo to hlasité.",
+        "Používá se při požáru.",
+        "Byl to poplach.",
+        "Houkalo to po celé škole.",
+        "Byla to siréna."
+      ]
+    },
+    {
+      "id": 5,
+      "story": "Někteří studenti si mysleli, že jde jen o prank. Jeden dokonce začal natáčet video.",
+      "question": "Co začal student natáčet?",
+      "answer": "vid",
+      "hints": [
+        "Používá se na sociální sítě.",
+        "Nahrává se mobilem.",
+        "Není to fotka.",
+        "Dává se to na TikTok.",
+        "Bylo to video."
+      ]
+    },
+    {
+      "id": 6,
+      "story": "Učitel se postavil doprostřed místnosti a klidně řekl: 'Nikdo neběží. Nikdo nezůstane sám.'",
+      "question": "Kam se postavil učitel?",
+      "answer": "pro",
+      "hints": [
+        "Nebyl u dveří.",
+        "Byl mezi studenty.",
+        "Byl uprostřed.",
+        "Nebyl v rohu.",
+        "Byl uprostřed místnosti."
+      ]
+    },
+    {
+      "id": 7,
+      "story": "Evakuace se zastavila ve staré části školy. Světla blikala a protipožární dveře byly zavřené.",
+      "question": "Jaká dveře byly zavřené?",
+      "answer": "pro",
+      "hints": [
+        "Souvisí s požárem.",
+        "Bývají těžké.",
+        "Chrání před ohněm.",
+        "Byly kovové.",
+        "Byly to protipožární dveře."
+      ]
+    },
+    {
+      "id": 8,
+      "story": "Jeden student zašeptal: 'Tak tady umřeme.' Učitel odpověděl, že přežil inspekci i maturitní týdny.",
+      "question": "Co podle učitele přežil?",
+      "answer": "insp",
+      "hints": [
+        "Chodí kvůli tomu vedení nervózní.",
+        "Kontroluje školu.",
+        "Je to nepříjemné.",
+        "Kontrola výuky.",
+        "Byla to inspekce."
+      ]
+    },
+    {
+      "id": 9,
+      "story": "Na konci chodby blikalo nouzové světlo a pod ním vedly schody dolů.",
+      "question": "Co blikalo na konci chodby?",
+      "answer": "svě",
+      "hints": [
+        "Bylo to na stropě.",
+        "Svítí to.",
+        "Pomáhá při výpadku proudu.",
+        "Bylo nouzové.",
+        "Bylo to světlo."
+      ]
+    },
+    {
+      "id": 10,
+      "story": "Dole byl starý sklad plný lavic, map a prachu. Ve tmě kapala voda.",
+      "question": "Co kapalo ve tmě?",
+      "answer": "vod",
+      "hints": [
+        "Bylo to mokré.",
+        "Tekutina.",
+        "Padalo to ze stropu.",
+        "Není to limonáda.",
+        "Byla to voda."
+      ]
+    },
+    {
+      "id": 11,
+      "story": "Jeden student řekl, že to připomíná horor. Učitel odpověděl, že opravovat třicet testů je větší horor.",
+      "question": "Co opravoval učitel?",
+      "answer": "tes",
+      "hints": [
+        "Píší je studenti.",
+        "Známkují se.",
+        "Není to diktát.",
+        "Bývají z matematiky.",
+        "Byly to testy."
+      ]
+    },
+    {
+      "id": 12,
+      "story": "Ve skladu objevili zamčené dveře. Z druhé strany se ozvalo kovové klepnutí.",
+      "question": "Co se ozvalo za dveřmi?",
+      "answer": "klep",
+      "hints": [
+        "Byl to zvuk.",
+        "Ozvalo se to kovově.",
+        "Někdo tam byl.",
+        "Nebyl to výkřik.",
+        "Bylo to klepnutí."
+      ]
+    },
+    {
+      "id": 13,
+      "story": "Jedna studentka okamžitě vytáhla mobil a chtěla všechno natočit.",
+      "question": "Co vytáhla studentka?",
+      "answer": "mob",
+      "hints": [
+        "Měla to v ruce.",
+        "Používá se to každý den.",
+        "Dá se tím natáčet.",
+        "Volá se z toho.",
+        "Byl to mobil."
+      ]
+    },
+    {
+      "id": 14,
+      "story": "Za dveřmi nebylo monstrum. Byl tam školník.",
+      "question": "Kdo byl za dveřmi?",
+      "answer": "ško",
+      "hints": [
+        "Pracuje ve škole.",
+        "Opravuje věci.",
+        "Má klíče.",
+        "Není to učitel.",
+        "Byl tam školník."
+      ]
+    },
+    {
+      "id": 15,
+      "story": "Školník šel zkontrolovat jističe a omylem se zamkl.",
+      "question": "Co šel školník zkontrolovat?",
+      "answer": "jis",
+      "hints": [
+        "Souvisí to s elektřinou.",
+        "Bývá to ve skříni.",
+        "Když to spadne, nejde proud.",
+        "Zapíná to elektřinu.",
+        "Byly to jističe."
+      ]
+    },
+    {
+      "id": 16,
+      "story": "Když se konečně dostali ven, čekali tam hasiči, policie a ředitel.",
+      "question": "Kdo čekal před školou?",
+      "answer": "has",
+      "hints": [
+        "Mají auta s majáky.",
+        "Hasí požáry.",
+        "Nosí helmy.",
+        "Přijíždí při poplachu.",
+        "Byli to hasiči."
+      ]
+    },
+    {
+      "id": 17,
+      "story": "Ukázalo se, že šlo o skutečný problém v elektroinstalaci.",
+      "question": "V čem byl problém?",
+      "answer": "ele",
+      "hints": [
+        "Souvisí to s proudem.",
+        "Bylo to ve škole.",
+        "Není to voda.",
+        "Souvisí to s kabely.",
+        "Byla to elektroinstalace."
+      ]
+    },
+    {
+      "id": 18,
+      "story": "Ředitel si učitele zavolal stranou a ptal se, jak dokázal udržet studenty v klidu.",
+      "question": "Kdo si učitele zavolal?",
+      "answer": "řed",
+      "hints": [
+        "Vede školu.",
+        "Má kancelář.",
+        "Podepisuje vysvědčení.",
+        "Není to zástupce.",
+        "Byl to ředitel."
+      ]
+    },
+    {
+      "id": 19,
+      "story": "Učitel odpověděl, že asi tím, že na studenty nekřičel.",
+      "question": "Co podle učitele nedělal?",
+      "answer": "kři",
+      "hints": [
+        "Dělají to někteří učitelé.",
+        "Je to hlasité.",
+        "Není to vysvětlování.",
+        "Zvyšování hlasu.",
+        "Nekřičel."
+      ]
+    },
+    {
+      "id": 20,
+      "story": "Od té doby už nebyl jen 'ten nový'. Studenti ho zdravili na chodbách.",
+      "question": "Kde ho studenti zdravili?",
+      "answer": "cho",
+      "hints": [
+        "Je to ve škole.",
+        "Spojuje učebny.",
+        "Chodí se tam o přestávce.",
+        "Není to kabinet.",
+        "Byly to chodby."
+      ]
+    },
+    {
+      "id": 21,
+      "story": "Někdo mu začal říkat Školní Batman.",
+      "question": "K jakému hrdinovi ho přirovnávali?",
+      "answer": "bat",
+      "hints": [
+        "Komiksový hrdina.",
+        "Má plášť.",
+        "Chrání město.",
+        "Není to Superman.",
+        "Byl to Batman."
+      ]
+    },
+    {
+      "id": 22,
+      "story": "Nejhorší třída na škole začala postupně pracovat.",
+      "question": "Co začala třída dělat?",
+      "answer": "pra",
+      "hints": [
+        "Dělá se to v hodině.",
+        "Není to spaní.",
+        "Souvisí to s učením.",
+        "Plní se úkoly.",
+        "Začali pracovat."
+      ]
+    },
+    {
+      "id": 23,
+      "story": "Jednou během hodiny vypadl proud v celé škole.",
+      "question": "Co vypadlo?",
+      "answer": "pro",
+      "hints": [
+        "Bez toho nejdou světla.",
+        "Souvisí to s elektřinou.",
+        "Nefungovaly počítače.",
+        "Byla tma.",
+        "Vypadl proud."
+      ]
+    },
+    {
+      "id": 24,
+      "story": "Studenti okamžitě vytáhli mobily a rozsvítili baterky.",
+      "question": "Co rozsvítili studenti?",
+      "answer": "bat",
+      "hints": [
+        "Svítí to na mobilu.",
+        "Používá se to ve tmě.",
+        "Není to lampa.",
+        "Je to v telefonu.",
+        "Byly to baterky."
+      ]
+    },
+    {
+      "id": 25,
+      "story": "Učitel si povzdechl, že konečně nemusí zapínat projektor.",
+      "question": "Co nemusel zapínat?",
+      "answer": "pro",
+      "hints": [
+        "Používá se při prezentaci.",
+        "Promítá obraz.",
+        "Bývá na stropě.",
+        "Není to počítač.",
+        "Byl to projektor."
+      ]
+    },
+    {
+      "id": 26,
+      "story": "Ve tmě někdo omylem zakopl o odpadkový koš.",
+      "question": "O co někdo zakopl?",
+      "answer": "koš",
+      "hints": [
+        "Bývá v rohu třídy.",
+        "Házejí se do něj papíry.",
+        "Je plastový.",
+        "Není to lavice.",
+        "Byl to koš."
+      ]
+    },
+    {
+      "id": 27,
+      "story": "Třída se smála tak hlasitě, že to bylo slyšet až na chodbu.",
+      "question": "Co bylo slyšet na chodbu?",
+      "answer": "smí",
+      "hints": [
+        "Dělá se to při vtipu.",
+        "Je to hlasité.",
+        "Není to křik.",
+        "Lidé to dělají při srandě.",
+        "Byl to smích."
+      ]
+    },
+    {
+      "id": 28,
+      "story": "Po několika týdnech studenti zjistili, že učitel umí být přísný jen když je to opravdu potřeba.",
+      "question": "Jaký uměl být učitel?",
+      "answer": "pří",
+      "hints": [
+        "Opak hodného.",
+        "Když někdo zlobí.",
+        "Není zlý.",
+        "Dodržuje pravidla.",
+        "Uměl být přísný."
+      ]
+    },
+    {
+      "id": 29,
+      "story": "Jedna studentka řekla, že poprvé zažila učitele, který se chová normálně.",
+      "question": "Jak se podle studentky učitel choval?",
+      "answer": "nor",
+      "hints": [
+        "Přirozeně.",
+        "Není divný.",
+        "Běžně.",
+        "Jako člověk.",
+        "Choval se normálně."
+      ]
+    },
+    {
+      "id": 30,
+      "story": "Na konci roku už všichni věděli, že ten nový učitel změnil nejen třídu, ale trochu i celou školu.",
+      "question": "Co podle příběhu učitel změnil?",
+      "answer": "ško",
+      "hints": [
+        "Je tam ředitel.",
+        "Jsou tam učebny.",
+        "Chodí tam studenti.",
+        "Je to budova vzdělávání.",
+        "Byla to škola."
+      ]
+    }
+  ]
+}

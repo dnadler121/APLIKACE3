@@ -1,0 +1,376 @@
+
+[
+  {
+    "story": "Klára poprvé vstoupila do restaurace Golden Spoon. Luxusní světla, tichá hudba a usměvaví hosté působili dokonale. Za barem ale stála servírka s tvrdým pohledem. Na jmenovce měla napsáno LINDA.",
+    "question": "Jak se jmenovala servírka za barem?",
+    "answer": "lin",
+    "hints": [
+      "Pracovala mezi hosty.",
+      "Měla tmavé vlasy.",
+      "Byla zkušenější než Klára.",
+      "Její jméno začínalo na L.",
+      "Byla to Linda."
+    ]
+  },
+  {
+    "story": "Linda poslala Kláru k baru pro limonády ke stolu číslo sedm. Na baru stály kávy, džusy a špinavé sklenice.",
+    "question": "Jak se říká místu, kde jsou připravené nápoje?",
+    "answer": "bar",
+    "hints": [
+      "Jsou tam sklenice.",
+      "Číšník tam chodí pro pití.",
+      "Bývá tam i káva.",
+      "Má to tři písmena.",
+      "Je to bar."
+    ]
+  },
+  {
+    "story": "Z kuchyně někdo zakřičel: „Kdo bere dvanáctku?!“ Klára si všimla, že každý číšník obsluhuje jinou část restaurace.",
+    "question": "Jak se v gastru říká části restaurace jednoho číšníka?",
+    "answer": "raj",
+    "hints": [
+      "Každý číšník má svůj.",
+      "Rozděluje se podle stolů.",
+      "Používá se to v restauraci.",
+      "Začíná to na R.",
+      "Je to rajón."
+    ]
+  },
+  {
+    "story": "Klára zapisovala objednávky hostů do zařízení vedle pokladny. Linda jí řekla, že nesmí udělat chybu.",
+    "question": "Jak se říká zařízení, kde jsou objednávky hostů?",
+    "answer": "kas",
+    "hints": [
+      "Hosté tam často platí.",
+      "Je vedle baru.",
+      "Ukazují se tam objednávky.",
+      "Začíná na K.",
+      "Je to kasa."
+    ]
+  },
+  {
+    "story": "Host zaplatil účet a Linda mu podala malý papírek s cenou a časem objednávky.",
+    "question": "Co host dostane po zaplacení?",
+    "answer": "uct",
+    "hints": [
+      "Je na tom cena.",
+      "Tiskne se to.",
+      "Host si to někdy bere domů.",
+      "Začíná to na Ú.",
+      "Je to účtenka."
+    ]
+  },
+  {
+    "story": "Večer doma otevřela Klára telefon. Uviděla video, kde rozlila limonádu hostovi do klína. Video mělo tisíce zhlédnutí.",
+    "question": "Kde bylo video zveřejněno?",
+    "answer": "sit",
+    "hints": [
+      "Lidé to sdíleli online.",
+      "Bylo to na internetu.",
+      "Souvisí to s lajky.",
+      "Používáš to v mobilu.",
+      "Byly to sociální sítě."
+    ]
+  },
+  {
+    "story": "Další den zahlédla Klára kuchaře, který pořád něco natáčel mobilem. Na zástěře měl napsáno ERIK.",
+    "question": "Jak se jmenoval pracovník kuchyně?",
+    "answer": "eri",
+    "hints": [
+      "Nebyla to Linda.",
+      "Byl v kuchyni.",
+      "Natáčel videa.",
+      "Začíná na E.",
+      "Byl to Erik."
+    ]
+  },
+  {
+    "story": "Ve skladu byla cítit káva, mokrý karton a starý olej. Linda tam Kláru poslala pro nové sklenice.",
+    "question": "Jak se říká místu se zásobami?",
+    "answer": "skl",
+    "hints": [
+      "Bývají tam krabice.",
+      "Nosí se odtud zásoby.",
+      "Je to v zázemí restaurace.",
+      "Začíná to na S.",
+      "Je to sklad."
+    ]
+  },
+  {
+    "story": "Linda tiše řekla: „Nechoď po zavíračce do sklepa.“ Jenže právě tím Kláru vyděsila ještě víc.",
+    "question": "Do jakého prostoru pod restaurací Klára nesměla chodit?",
+    "answer": "skl",
+    "hints": [
+      "Bylo to pod restaurací.",
+      "Vedly tam schody dolů.",
+      "Byla tam tma.",
+      "Začíná to na S.",
+      "Byl to sklep."
+    ]
+  },
+  {
+    "story": "Hosté netrpělivě čekali na nabídku dne. Kuchař zrovna připravoval burger a polévku.",
+    "question": "Jak se říká nabídce dne v restauraci?",
+    "answer": "men",
+    "hints": [
+      "Hosté si to čtou.",
+      "Bývá to na tabuli.",
+      "Obsahuje jídla dne.",
+      "Začíná to na M.",
+      "Je to menu."
+    ]
+  },
+  {
+    "story": "Na baru cinkaly vysoké sklenice od limonád a Aperolu. Klára je rychle uklízela.",
+    "question": "Z čeho hosté pili limonádu?",
+    "answer": "skl",
+    "hints": [
+      "Je to průhledné.",
+      "Může se to rozbít.",
+      "Pije se z toho.",
+      "Začíná to na S.",
+      "Byla to sklenice."
+    ]
+  },
+  {
+    "story": "Z kuchyně někdo zakřičel: „Polévka jde ven!“ Klára poprvé cítila opravdový chaos večerní směny.",
+    "question": "Jaké jídlo právě šlo z kuchyně?",
+    "answer": "pol",
+    "hints": [
+      "Bývá to v hlubokém talíři.",
+      "Často je to před hlavním jídlem.",
+      "Může být vývar.",
+      "Začíná to na P.",
+      "Byla to polévka."
+    ]
+  },
+  {
+    "story": "Klára obsluhovala stůl číslo sedm. Hosté byli netrpěliví a pořád mávali rukou.",
+    "question": "Co obsluhovala Klára?",
+    "answer": "stu",
+    "hints": [
+      "Seděli tam hosté.",
+      "Bylo tam číslo.",
+      "Číšník tam nosí jídlo.",
+      "Začíná to na S.",
+      "Byl to stůl."
+    ]
+  },
+  {
+    "story": "Host nechal Lindě několik mincí navíc. Linda je rychle schovala do kapsy zástěry.",
+    "question": "Jak se říká penězům navíc pro číšníka?",
+    "answer": "dys",
+    "hints": [
+      "Host to nechává dobrovolně.",
+      "Číšník z toho má radost.",
+      "Je to odměna.",
+      "Začíná to na D.",
+      "Je to dýško."
+    ]
+  },
+  {
+    "story": "Erik měl pořád v ruce telefon. Občas se smál, když si přehrával videa zaměstnanců.",
+    "question": "Co držel Erik v ruce?",
+    "answer": "tel",
+    "hints": [
+      "Natáčí to videa.",
+      "Volá se z toho.",
+      "Máš to v kapse.",
+      "Začíná to na T.",
+      "Byl to telefon."
+    ]
+  },
+  {
+    "story": "V restauraci začal večerní chaos. Hosté čekali na objednávky a kuchyně nestíhala.",
+    "question": "Co začalo v restauraci?",
+    "answer": "cha",
+    "hints": [
+      "Všichni byli ve stresu.",
+      "Nikdo nestíhal.",
+      "Byl tam zmatek.",
+      "Začíná to na C.",
+      "Byl to chaos."
+    ]
+  },
+  {
+    "story": "Klára našla starou zástěru se jménem TEREZA. Linda okamžitě ztuhla.",
+    "question": "Jak se jmenovala bývalá brigádnice?",
+    "answer": "ter",
+    "hints": [
+      "Její jméno bylo na zástěře.",
+      "Pracovala tam před Klárou.",
+      "Linda nechtěla mluvit.",
+      "Začíná na T.",
+      "Byla to Tereza."
+    ]
+  },
+  {
+    "story": "Ve sklepě byly staré mobily, nabíječky a složky se jmény zaměstnanců.",
+    "question": "Co bylo ukryté ve sklepě?",
+    "answer": "mob",
+    "hints": [
+      "Dá se z toho volat.",
+      "Natáčí to videa.",
+      "Nosí se to v kapse.",
+      "Začíná to na M.",
+      "Byly to mobily."
+    ]
+  },
+  {
+    "story": "Na jedné složce stálo velkým písmem KLÁRA – TÝDEN 1.",
+    "question": "Čí jméno bylo na složce?",
+    "answer": "kla",
+    "hints": [
+      "Byla to hlavní postava.",
+      "Pracovala jako servírka.",
+      "Byla nová.",
+      "Začíná to na K.",
+      "Byla to Klára."
+    ]
+  },
+  {
+    "story": "Majitel mluvil o tom, že virální videa restauraci přinášejí popularitu.",
+    "question": "Co chtěl majitel získat videi?",
+    "answer": "vir",
+    "hints": [
+      "Souvisí to s internetem.",
+      "Lidé to sdílejí.",
+      "Má to hodně zhlédnutí.",
+      "Začíná to na V.",
+      "Šlo o virální úspěch."
+    ]
+  },
+  {
+    "story": "Linda začala mít strach. Poprvé nevypadala tvrdě, ale unaveně.",
+    "question": "Jaký pocit měla Linda?",
+    "answer": "str",
+    "hints": [
+      "Nebyla klidná.",
+      "Bála se.",
+      "Byla nervózní.",
+      "Začíná to na S.",
+      "Měla strach."
+    ]
+  },
+  {
+    "story": "Klára tajně zapnula nahrávání v mobilu. Chtěla získat důkaz.",
+    "question": "Co Klára zapnula?",
+    "answer": "nah",
+    "hints": [
+      "Používá se to k videu.",
+      "Zachytí to zvuk i obraz.",
+      "Dělá to důkaz.",
+      "Začíná to na N.",
+      "Bylo to nahrávání."
+    ]
+  },
+  {
+    "story": "Video se začalo rychle šířit internetem. Tentokrát se lidé nesmáli.",
+    "question": "Co se začalo šířit?",
+    "answer": "vid",
+    "hints": [
+      "Bylo to natočené.",
+      "Lidé to sledovali online.",
+      "Mělo to tisíce zhlédnutí.",
+      "Začíná to na V.",
+      "Bylo to video."
+    ]
+  },
+  {
+    "story": "Lidé psali, že restaurace ponižuje zaměstnance a ničí je před internetem.",
+    "question": "Jak se říká dlouhodobému ponižování lidí?",
+    "answer": "sik",
+    "hints": [
+      "Děje se to opakovaně.",
+      "Oběť má strach.",
+      "Může to být i online.",
+      "Začíná to na Š.",
+      "Byla to šikana."
+    ]
+  },
+  {
+    "story": "Erik si uvědomil, že videi ubližoval lidem. Poprvé vypadal provinile.",
+    "question": "Co si Erik uvědomil?",
+    "answer": "ubl",
+    "hints": [
+      "Nebylo to v pořádku.",
+      "Někomu dělal bolest.",
+      "Lidé kvůli němu trpěli.",
+      "Začíná to na U.",
+      "Uvědomil si, že ubližoval."
+    ]
+  },
+  {
+    "story": "Majitel přišel o reputaci. Lidé začali restauraci bojkotovat.",
+    "question": "O co majitel přišel?",
+    "answer": "rep",
+    "hints": [
+      "Souvisí to s pověstí.",
+      "Lidé mu přestali věřit.",
+      "Měl špatné jméno.",
+      "Začíná to na R.",
+      "Přišel o reputaci."
+    ]
+  },
+  {
+    "story": "Golden Spoon začal být večer téměř prázdný. Hosté chodili jinam.",
+    "question": "Co začalo být prázdné?",
+    "answer": "res",
+    "hints": [
+      "Dřív tam seděli hosté.",
+      "Bylo to skoro bez lidí.",
+      "Bylo tam ticho.",
+      "Začíná to na P.",
+      "Bylo to prázdné."
+    ]
+  },
+  {
+    "story": "Linda se Kláře omluvila za to, jak se k ní chovala první dny.",
+    "question": "Co Linda udělala?",
+    "answer": "oml",
+    "hints": [
+      "Přiznala chybu.",
+      "Řekla promiň.",
+      "Chtěla vztahy napravit.",
+      "Začíná to na O.",
+      "Omluvila se."
+    ]
+  },
+  {
+    "story": "Klára se rozhodla z restaurace odejít. Už nechtěla být součástí lží.",
+    "question": "Co se Klára rozhodla udělat?",
+    "answer": "ode",
+    "hints": [
+      "Nechtěla tam zůstat.",
+      "Chtěla nový začátek.",
+      "Opustila restauraci.",
+      "Začíná to na O.",
+      "Rozhodla se odejít."
+    ]
+  },
+  {
+    "story": "O několik měsíců později otevřely Klára a Linda vlastní malou kavárnu.",
+    "question": "Jaký podnik otevřely?",
+    "answer": "kav",
+    "hints": [
+      "Prodává se tam káva.",
+      "Je to menší než restaurace.",
+      "Lidé tam chodí na zákusky.",
+      "Začíná to na K.",
+      "Byla to kavárna."
+    ]
+  },
+  {
+    "story": "Na dveřích nové kavárny visel nápis: TADY NEJSOU LIDÉ OBSAH. TADY JSOU LIDÉ LIDÉ.",
+    "question": "Co podle nápisu nejsou lidé?",
+    "answer": "obs",
+    "hints": [
+      "Souvisí to se sociálními sítěmi.",
+      "Lidé nejsou videa.",
+      "Nemají sloužit pro lajky.",
+      "Začíná to na O.",
+      "Nejsou obsah."
+    ]
+  }
+]
+

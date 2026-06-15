@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Vlastní rozklad</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#f4f4f4;
+            text-align:center;
+            padding:40px;
+        }
+
+        .box{
+            background:white;
+            max-width:700px;
+            margin:auto;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+        input{
+            padding:10px;
+            width:120px;
+            margin:10px;
+            font-size:18px;
+        }
+
+        button{
+            padding:10px 20px;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        .result{
+            margin-top:30px;
+            font-size:24px;
+        }
+
+        a{
+            display:inline-block;
+            margin-top:20px;
+            text-decoration:none;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+
+<h1>Vlastní procvičování</h1>
+
+<p>Tento rozklad se NEpočítá do povinných úkolů.</p>
+
+<form method="POST">
+
+    <input type="number" name="a" placeholder="První číslo" required>
+    <input type="number" name="b" placeholder="Druhé číslo" required>
+
+    <br>
+
+    <button type="submit">Rozložit</button>
+
+</form>
+
+{% if custom_rows %}
+
+<div class="result">
+
+<p><b>{{ original[0] }}</b> = {{ custom_rows[0]|join(" × ") }}</p>
+
+<p><b>{{ original[1] }}</b> = {{ custom_rows[1]|join(" × ") }}</p>
+
+</div>
+
+{% endif %}
+
+<a href="/">← Zpět do hlavní hry</a>
+
+</div>
+
+</body>
+</html>

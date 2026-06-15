@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Golden Spoon</title>
+<link rel="stylesheet"href="{{ url_for('restaurace.static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="story-box">
+
+<div class="progress">
+<div class="bar" style="width:{{ (step_id/total)*100 }}%"></div>
+</div>
+
+<h1>Kapitola {{ step_id }}</h1>
+
+<p>{{ current.story }}</p>
+
+<div class="question-box">
+
+<h2>{{ current.question }}</h2>
+
+<form method="post">
+
+<input type="text"
+       name="answer"
+       autocomplete="off"
+       placeholder="Napiš odpověď">
+
+<button type="submit">
+Odeslat odpověď
+</button>
+
+</form>
+
+{% if error %}
+<div class="error">
+To ještě není správně.
+</div>
+{% endif %}
+
+</div>
+
+<div class="hints">
+
+<button id="hintBtn" onclick="showHint()">
+Zobrazit další nápovědu
+</button>
+
+<div id="hintContainer"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let hints = [
+{% for hint in current.hints %}
+"{{ hint }}",
+{% endfor %}
+];
+
+let currentHint = 0;
+
+function showHint(){
+
+    if(currentHint < hints.length){
+
+        let div = document.createElement("div");
+
+        div.className = "hint-box";
+
+        div.innerHTML =
+            "<strong>Nápověda "
+            + (currentHint + 1)
+            + ":</strong><br><br>"
+            + hints[currentHint];
+
+        document
+            .getElementById("hintContainer")
+            .appendChild(div);
+
+        currentHint++;
+
+        if(currentHint >= hints.length){
+            document
+                .getElementById("hintBtn")
+                .style.display = "none";
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

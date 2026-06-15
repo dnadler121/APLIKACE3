@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gastro účetnictví</title>
+    <link rel="stylesheet"href="{{ url_for('ucetnictvi.static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+    <div>
+        <strong>Gastro den</strong>
+        <span>zjednodušené účtování restaurace</span>
+    </div>
+    <a href="{{ url_for('ucetnictvi.reset') }}">Nový student</a>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

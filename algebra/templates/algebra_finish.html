@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotovo</title>
+<link rel="stylesheet"href="{{ url_for('algebra.static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<div class="finish-card">
+<h1>🎉 Hotovo!</h1>
+<p>Student splnil všech 10 stran. Na každé straně byly 2 příklady.</p>
+<h2>Splněné strany: {{ correct }} / {{ total }}</h2>
+<h2>Úspěšnost: {{ procenta }} %</h2>
+<h2>Známka: {{ znamka }}</h2>
+<button onclick="window.location.href='/'">Začít znovu</button>
+</div>
+</div>
+</body>
+</html>

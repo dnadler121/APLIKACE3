@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algebraické úpravy</title>
+<link rel="stylesheet"href="{{ url_for('algebra.static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="topbar">
+    <div>
+        <h1>Algebraické úpravy výrazů</h1>
+        <p>Na každé stránce vyřeš oba příklady. Další stránka se odemkne až po správném splnění obou.</p>
+    </div>
+
+    <div class="progress">
+        Strana {{ current }} / {{ total }}
+        <br>
+        Splněno: {{ correct }}
+        <br>
+        Známka: {{ znamka }}
+    </div>
+</div>
+
+<div class="info-box">
+    <h2>Co procvičujeme?</h2>
+    <p><strong>Vytýkání:</strong> 6x+12 → 6(x+2)</p>
+    <p><strong>Roznásobování:</strong> 3(x-4) → 3x-12</p>
+    <p><strong>Sčítání členů:</strong> 3x+2y+4x-y → 7x+y</p>
+</div>
+
+<div class="examples-grid">
+{% for priklad in page.priklady %}
+<div class="example-card" id="card{{ loop.index }}">
+    <div class="type-pill">{{ priklad.typ }}</div>
+    <div class="zadani">{{ priklad.zadani }}</div>
+    <div class="mini-vzor">Vzor: {{ priklad.vzor }}</div>
+    <div class="step-hint">✏️ {{ priklad.hint }}</div>
+    <input type="text" id="answer{{ loop.index }}" autocomplete="off" placeholder="Napiš výsledek">
+    <p class="message" id="message{{ loop.index }}"></p>
+</div>
+{% endfor %}
+</div>
+
+<div class="footer-buttons">
+    <button onclick="checkPage()" id="checkButton">Zkontrolovat oba příklady</button>
+    <button onclick="nextPage()" id="nextButton" disabled>Další stránka</button>
+    <button onclick="resetTest()" class="secondary">Začít znovu</button>
+</div>
+
+</div>
+
+<script>
+async function checkPage(){
+    const response = await fetch("/check", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+            answer1:document.getElementById("answer1").value,
+            answer2:document.getElementById("answer2").value
+        })
+    });
+
+    const result = await response.json();
+
+    showResult(1, result.correct1);
+    showResult(2, result.correct2);
+
+    if(result.ok){
+        document.getElementById("checkButton").disabled = true;
+        document.getElementById("nextButton").disabled = false;
+        document.getElementById("answer1").disabled = true;
+        document.getElementById("answer2").disabled = true;
+    }
+}
+
+function showResult(num, correct){
+    const card = document.getElementById("card" + num);
+    const msg = document.getElementById("message" + num);
+
+    if(correct){
+        card.classList.remove("bad-card");
+        card.classList.add("good-card");
+        msg.innerHTML = "✅ Správně!";
+        msg.className = "message good";
+    }else{
+        card.classList.remove("good-card");
+        card.classList.add("bad-card");
+        msg.innerHTML = "❌ Ještě uprav. Zkontroluj podobné členy nebo znaménka.";
+        msg.className = "message bad";
+    }
+}
+
+async function nextPage(){
+    const response = await fetch("/next/");
+    const data = await response.json();
+    if(data.finished){ window.location.href="/algebra/"; }
+    else{ window.location.reload(); }
+}
+
+async function resetTest(){
+    await fetch("/reset/");
+    window.location.href="/";
+}
+</script>
+
+</body>
+</html>

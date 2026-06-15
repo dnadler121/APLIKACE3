@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Výsledek</title>
+<link rel="stylesheet"href="{{ url_for('intervaly.static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container finish">
+
+<h1>🎉 Hotovo</h1>
+
+<div class="result">
+Správně: {{ score }} / 10
+</div>
+
+<div class="grade">
+Známka: {{ grade }}
+</div>
+
+<a href="/restart">
+<button>
+Hrát znovu
+</button>
+</a>
+
+</div>
+
+</body>
+</html>

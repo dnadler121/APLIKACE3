@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"href="{{ url_for('rovnice.static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="finish-card">
+
+<h1>🎉 Hotovo!</h1>
+
+<h2>Správně: {{ correct }} / {{ total }}</h2>
+<h2>Úspěšnost: {{ procenta }} %</h2>
+<h2>Známka: {{ znamka }}</h2>
+
+<button onclick="window.location.href='/'">
+Hrát znovu
+</button>
+
+</div>
+
+</div>
+
+</body>
+</html>

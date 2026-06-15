@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Nerovnice s neznámou ve jmenovateli</title>
+    <link rel="stylesheet"href="{{ url_for('nerovnice.static', filename='style.css') }}">
+</head>
+<body>
+
+<main class="page">
+
+    <header class="hero">
+        <div>
+            <p class="eyebrow">Interaktivní matematika</p>
+            <h1>Nerovnice s neznámou ve jmenovateli</h1>
+            <p class="subtitle">
+                Postup je rozdělený na 3 kontroly: nejdřív 1. průnik, potom 2. průnik
+                a nakonec celkový výsledek.
+            </p>
+        </div>
+
+        <div class="counter">
+            Příklad {{ current }} / {{ total }}
+        </div>
+    </header>
+
+    <section class="task-card">
+        <div class="task-label">Zadání</div>
+        <div class="fraction-task">
+    <span class="frac">
+
+        <span class="top">
+            {{ ex["numerator"] }}
+        </span>
+
+        <span class="bottom">
+            {{ ex["denominator"] }}
+        </span>
+
+    </span>
+
+    <span class="sign">
+        {{ ex["sign"] }} 0
+    </span>
+</div>
+    </section>
+
+    <form method="post">
+
+        <section class="cases">
+
+            <!-- 1. PRŮNIK -->
+            <div class="case-card {% if checked1 %}ok-card{% endif %}">
+                <h2>1. průnik {% if checked1 %}✅{% endif %}</h2>
+
+                <div class="row">
+                    <input name="c1n" value="{{ values.c1n }}" placeholder="např. x-6>0" class="{% if 'c1n' in errors %}error{% endif %}">
+                    <span class="math-symbol">∩</span>
+                    <input name="c1d" value="{{ values.c1d }}" placeholder="např. x+5>0" class="{% if 'c1d' in errors %}error{% endif %}">
+                </div>
+
+                <div class="row small">
+                    <input name="s1n" value="{{ values.s1n }}" placeholder="např. x>6" class="{% if 's1n' in errors %}error{% endif %}">
+                    <span class="math-symbol">∩</span>
+                    <input name="s1d" value="{{ values.s1d }}" placeholder="např. x>-5" class="{% if 's1d' in errors %}error{% endif %}">
+                </div>
+
+                <div class="drawing-title">Zakresli 1. průnik</div>
+
+                <div class="controls">
+                    <button type="button" class="mode active" data-axis="axis1" data-part="A">1. interval</button>
+                    <button type="button" class="mode" data-axis="axis1" data-part="B">2. interval</button>
+                    <button type="button" class="clear" data-axis="axis1">Vymazat</button>
+                </div>
+
+                <div class="axis" id="axis1">
+                    <div class="interval layerA hidden"></div>
+                    <div class="interval layerB hidden"></div>
+                    <div class="interval overlap hidden"></div>
+                    <div class="line"></div>
+                    {% for n in range(-10, 11) %}
+                    <div class="tick" data-value="{{ n }}" style="left: {{ (n+10)*5 }}%;">
+                        <div class="tickline"></div>
+                        <div class="label">{{ n }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="step-check">
+                    <button type="submit" name="step" value="check_case1">
+                        Zkontrolovat 1. průnik
+                    </button>
+                </div>
+            </div>
+
+            <div class="union-symbol">∪</div>
+
+            <!-- 2. PRŮNIK -->
+            <div class="case-card {% if checked2 %}ok-card{% endif %}">
+                <h2>2. průnik {% if checked2 %}✅{% endif %}</h2>
+
+                <div class="row">
+                    <input name="c2n" value="{{ values.c2n }}" placeholder="např. x-6<0" class="{% if 'c2n' in errors %}error{% endif %}">
+                    <span class="math-symbol">∩</span>
+                    <input name="c2d" value="{{ values.c2d }}" placeholder="např. x+5<0" class="{% if 'c2d' in errors %}error{% endif %}">
+                </div>
+
+                <div class="row small">
+                    <input name="s2n" value="{{ values.s2n }}" placeholder="např. x<6" class="{% if 's2n' in errors %}error{% endif %}">
+                    <span class="math-symbol">∩</span>
+                    <input name="s2d" value="{{ values.s2d }}" placeholder="např. x<-5" class="{% if 's2d' in errors %}error{% endif %}">
+                </div>
+
+                <div class="drawing-title">Zakresli 2. průnik</div>
+
+                <div class="controls">
+                    <button type="button" class="mode active" data-axis="axis2" data-part="A">1. interval</button>
+                    <button type="button" class="mode" data-axis="axis2" data-part="B">2. interval</button>
+                    <button type="button" class="clear" data-axis="axis2">Vymazat</button>
+                </div>
+
+                <div class="axis" id="axis2">
+                    <div class="interval layerA hidden"></div>
+                    <div class="interval layerB hidden"></div>
+                    <div class="interval overlap hidden"></div>
+                    <div class="line"></div>
+                    {% for n in range(-10, 11) %}
+                    <div class="tick" data-value="{{ n }}" style="left: {{ (n+10)*5 }}%;">
+                        <div class="tickline"></div>
+                        <div class="label">{{ n }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="step-check">
+                    <button type="submit" name="step" value="check_case2">
+                        Zkontrolovat 2. průnik
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- VÝSLEDEK -->
+        <section class="final-card">
+            <div>
+                <h2>Výsledek</h2>
+                <p>
+                    Zapiš sjednocení průniků. Dva intervaly odděl čárkou.
+                    Např. <strong>(-inf;-5),(6;inf)</strong>
+                </p>
+            </div>
+
+            <div class="final-row">
+                <input name="result" value="{{ values.result }}" placeholder="výsledek" class="{% if 'result' in errors %}error{% endif %}">
+                <button type="submit" name="step" value="check_result">
+                    Zkontrolovat výsledek
+                </button>
+            </div>
+        </section>
+
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+
+    </form>
+
+</main>
+
+<script src="{{ url_for('nerovnice.static', filename='script.js') }}"></script>
+
+</body>
+</html>

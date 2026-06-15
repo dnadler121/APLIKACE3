@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>
+        Výsledek
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('dane.static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+<main class="layout narrow">
+
+    <section class="result-card">
+
+        <p class="badge">
+            Dokončeno
+        </p>
+
+        <h1>
+            Výsledek práce
+        </h1>
+
+        <div class="score">
+
+            <div>
+
+                <span>
+                    Úspěšnost
+                </span>
+
+                <b>
+                    {{ percent }} %
+                </b>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Body
+                </span>
+
+                <b>
+                    {{ points }}/{{ max_points }}
+                </b>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Známka
+                </span>
+
+                <b>
+                    {{ grade }}
+                </b>
+
+            </div>
+
+        </div>
+
+        <h2>
+            Porovnání čistého příjmu
+        </h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Typ
+                    </th>
+
+                    <th>
+                        Hrubý příjem
+                    </th>
+
+                    <th>
+                        Sociální
+                    </th>
+
+                    <th>
+                        Zdravotní
+                    </th>
+
+                    <th>
+                        Daň
+                    </th>
+
+                    <th>
+                        Čistý příjem
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for t in tasks %}
+
+                <tr>
+
+                    <td>
+                        {{ t.kind }}
+                    </td>
+
+                    <td>
+                        {{ t.gross }} Kč
+                    </td>
+
+                    <td>
+                        {{ t.social }} Kč
+                    </td>
+
+                    <td>
+                        {{ t.health }} Kč
+                    </td>
+
+                    <td>
+                        {{ t.tax_after_discount }} Kč
+                    </td>
+
+                    <td>
+
+                        <b>
+                            {{ t.net }} Kč
+                        </b>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% if best %}
+
+        <div class="reflection">
+
+            Nejvyšší čistý příjem
+            v tomto příkladu vyšel u:
+
+            <b>
+                {{ best.kind }}
+            </b>
+
+        </div>
+
+        {% endif %}
+
+        <div class="grade-help">
+
+            <b>
+                Stupnice:
+            </b>
+
+            100–90 % = 1
+
+            |
+            89–80 % = 2
+
+            |
+            79–70 % = 3
+
+            |
+            69–60 % = 4
+
+            |
+            méně než 60 % = 5
+
+        </div>
+
+        <a
+            class="button"
+            href="{{ url_for('dane.index') }}"
+        >
+            Spustit znovu
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+
+</html>

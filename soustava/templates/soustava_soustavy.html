@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soustavy rovnic krok za krokem</title>
+    <link rel="stylesheet" href="{{ url_for('soustava.static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+        <div>
+            <h1>Soustavy rovnic krok za krokem</h1>
+            <p>Vyřeš soustavu rovnic sčítací metodou. Další krok se odemkne až po správné odpovědi.</p>
+        </div>
+
+        <div class="progress">
+            {{ current }} / {{ total }}<br>
+            Správně: {{ correct }}<br>
+            Známka: {{ znamka }}
+        </div>
+    </div>
+
+    <div class="topic-pill">{{ example.topic }}</div>
+
+    <div class="equation-box stacked-equations">
+        <div>{{ example.zadani1 }}</div>
+        <div>{{ example.zadani2 }}</div>
+    </div>
+
+    <div class="example-box">
+        <h2>Postup podle sešitu</h2>
+        <p><strong>1.</strong> Zapíšeme soustavu rovnic pod sebe.</p>
+        <p><strong>2.</strong> Rozhodneme, kterou neznámou chceme odstranit. Zde budeme odstraňovat <strong>x</strong>.</p>
+        <p><strong>3.</strong> Jednu rovnici vynásobíme tak, aby po sečtení vzniklo <strong>0x</strong>.</p>
+        <p><strong>4.</strong> Sečteme rovnice a dopočítáme první neznámou.</p>
+        <p><strong>5.</strong> Dosadíme do původní rovnice a dopočítáme druhou neznámou.</p>
+    </div>
+
+    {% for step in example.steps %}
+    <div class="step-box {% if not loop.first %}locked{% endif %}" id="block{{ loop.index }}">
+        <h2>{{ step.title }}</h2>
+
+        {% if loop.index == 4 %}
+
+        <div class="mini-vzor">
+            Vzor: y=-4
+        </div>
+
+        {% elif loop.index == 5 %}
+
+        <div class="mini-vzor">
+            Vzor: x+8=12
+        </div>
+
+        {% elif loop.index == 6 %}
+
+        <div class="mini-vzor">
+            Vzor: x=4
+        </div>
+
+        {% else %}
+
+        <div class="mini-vzor">
+            Vzor: {{ step.vzor }}
+        </div>
+
+{% endif %}
+        <div class="step-hint">✏️ {{ step.hint }}</div>
+
+        {% if loop.index == 1 %}
+
+            <div class="choice-row">
+                <label><input type="radio" name="variable" value="x" checked> odstranit x</label>
+                <label><input type="radio" name="variable" value="y"> odstranit y</label>
+            </div>
+
+            <div class="answer-row">
+                <button onclick="checkStep(1)" id="button1">Zkontrolovat</button>
+            </div>
+
+        {% elif loop.index == 2 %}
+
+            <div class="choice-row">
+                <label><input type="radio" name="rovnice" value="1" checked> násobím 1. rovnici</label>
+                <label><input type="radio" name="rovnice" value="2"> násobím 2. rovnici</label>
+            </div>
+
+            <div class="answer-row">
+                <input type="text" id="nasobek" disabled autocomplete="off" placeholder="Napiš násobek, např. -3">
+                <button onclick="checkStep(2)" id="button2" disabled>Zkontrolovat</button>
+            </div>
+
+            <div class="result-line" id="multipliedLine"></div>
+
+        {% else %}
+
+            {% if loop.index == 3 %}
+            <div class="sum-visual">
+
+                <div class="eq-line">
+                    {{ example.scitani_1 }}
+                </div>
+
+                <div class="eq-line">
+                    {{ example.scitani_2 }}
+                </div>
+
+                <div class="sum-line"></div>
+
+                <div class="sum-title">
+                    součet rovnic
+                </div>
+
+            </div>
+            {% endif %}
+
+            <div class="answer-row">
+                <input type="text"
+                       id="step{{ loop.index }}"
+                       {% if not loop.first %}disabled{% endif %}
+                       autocomplete="off"
+                       placeholder="Doplň celý krok">
+
+                <button onclick="checkStep({{ loop.index }})"
+                        id="button{{ loop.index }}"
+                        {% if not loop.first %}disabled{% endif %}>
+                    Zkontrolovat
+                </button>
+            </div>
+
+        {% endif %}
+
+        <p class="message" id="message{{ loop.index }}"></p>
+
+    </div>
+    {% endfor %}
+
+    <div class="footer-buttons">
+        <button onclick="nextExample()" id="nextButton" disabled>Další příklad</button>
+        <button onclick="resetTest()" class="secondary">Začít znovu</button>
+    </div>
+
+</div>
+
+<script>
+const stepCount = {{ example.steps|length }};
+const checkUrl = "{{ url_for('soustava.check') }}";
+const nextUrl = "{{ url_for('soustava.next_example') }}";
+const resetUrl = "{{ url_for('soustava.reset') }}";
+const soustavyUrl = "{{ url_for('soustava.soustavy') }}";
+
+function unlockStep(step) {
+    const block = document.getElementById("block" + step);
+    block.classList.remove("locked");
+
+    const input = document.getElementById("step" + step);
+    const button = document.getElementById("button" + step);
+    const nasobek = document.getElementById("nasobek");
+
+    if (input) {
+        input.disabled = false;
+        input.focus();
+    }
+
+    if (button) button.disabled = false;
+
+    if (step === 2 && nasobek) {
+        nasobek.disabled = false;
+        nasobek.focus();
+    }
+}
+
+function lockDone(step) {
+    const input = document.getElementById("step" + step);
+    const button = document.getElementById("button" + step);
+
+    if (input) input.disabled = true;
+    if (button) button.disabled = true;
+
+    if (step === 2) {
+        document.getElementById("nasobek").disabled = true;
+    }
+}
+
+async function checkStep(step) {
+
+    let payload = { step: step };
+
+    if (step === 1) {
+
+        payload.answer =
+            document.querySelector('input[name="variable"]:checked').value;
+
+    } else if (step === 2) {
+
+        payload.rovnice =
+            document.querySelector('input[name="rovnice"]:checked').value;
+
+        payload.nasobek =
+            document.getElementById("nasobek").value;
+
+    } else {
+
+        payload.answer =
+            document.getElementById("step" + step).value;
+    }
+
+    const response = await fetch(checkUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    const message =
+        document.getElementById("message" + step);
+
+    if (result.correct) {
+
+        message.innerHTML = "✅ Správně!";
+        message.className = "message good";
+
+        lockDone(step);
+
+        if (step === 2 && result.multiplied) {
+
+            document.getElementById("multipliedLine").innerHTML =
+                "Vynásobená rovnice: <strong>" +
+                result.multiplied +
+                "</strong>";
+        }
+
+        if (step < stepCount) {
+
+            unlockStep(step + 1);
+
+        } else {
+
+            message.innerHTML =
+                "🎉 Výborně! Příklad je hotový.";
+
+            document.getElementById("nextButton").disabled = false;
+        }
+
+    } else {
+
+        message.innerHTML =
+            "❌ Zkus to upravit.";
+
+        message.className = "message bad";
+    }
+}
+
+async function nextExample() {
+
+    const response = await fetch(nextUrl);
+    const data = await response.json();
+
+    if (data.finished) {
+
+        window.location.href = soustavyUrl;
+
+    } else {
+
+        window.location.reload();
+    }
+}
+
+async function resetTest() {
+
+    await fetch(resetUrl);
+    window.location.href = soustavyUrl;
+}
+</script>
+
+</body>
+</html>
