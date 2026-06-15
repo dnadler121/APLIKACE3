@@ -56,7 +56,7 @@
 
 <script>
 async function checkPage(){
-    const response = await fetch("/check", {
+    const response = await fetch("/algebra/check", {
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
@@ -96,14 +96,14 @@ function showResult(num, correct){
 }
 
 async function nextPage(){
-    const response = await fetch("/next/");
+    const response = await fetch("/algebra/next/");
     const data = await response.json();
     if(data.finished){ window.location.href="/algebra/"; }
     else{ window.location.reload(); }
 }
 
 async function resetTest(){
-    await fetch("/reset/");
+    await fetch("/algebra/reset/");
     window.location.href="/";
 }
 </script>
