@@ -90,7 +90,7 @@ const stepCount = {{ example.steps|length }};
 
 async function checkStep(step){
 
-    const response = await fetch("/check",{
+    const response = await fetch("/rovnice/check",{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -139,7 +139,7 @@ async function checkStep(step){
 
 async function nextExample(){
 
-    const r = await fetch("/next/");
+    const r = await fetch("/rovnice/next/");
     const data = await r.json();
 
     if(data.finished){
@@ -151,7 +151,7 @@ async function nextExample(){
 
 async function resetTest(){
 
-    await fetch("/reset/");
+    await fetch("/rovnice/reset/");
     window.location.href="/";
 }
 
