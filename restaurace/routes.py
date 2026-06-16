@@ -10,8 +10,9 @@ restaurace_bp = Blueprint(
     static_folder="static"
 )
 
-with open("restaurace/stories/golden_spoon.json", encoding="utf-8") as f:
-    STORY = json.load(f)
+with open("restaurace/stories/golden_spoon.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+    STORY = data["chapters"]
 
 def normalize(text):
     replacements = {
