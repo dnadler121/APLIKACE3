@@ -1,0 +1,31 @@
+
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>Přehled pro učitele</title>
+    <link rel="stylesheet"href="{{ url_for('python.static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+    <a href="{{ url_for('python.index') }}">← Zpět</a>
+    <strong>Přehled práce</strong>
+</header>
+<main class="panel teacher-panel">
+    <h1>Výsledek studenta</h1>
+    <p class="big">{{ percent }} %</p>
+    <p>Splněno: {{ done|length }} / {{ lessons|length }}</p>
+    <p>Orientační známka: <strong>{{ grade }}</strong></p>
+    <table>
+        <tr><th>Úkol</th><th>Název</th><th>Stav</th></tr>
+        {% for l in lessons %}
+        <tr>
+            <td>{{ l.id }}</td>
+            <td>{{ l.title }}</td>
+            <td>{% if l.id in done %}splněno{% else %}nesplněno{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</main>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>Python – první lekce</title>
+    <link rel="stylesheet"href="{{ url_for('python.static', filename='style.css') }}">
+
+</head>
+<body>
+<header class="hero">
+    <div>
+        <p class="badge">Flask výuková aplikace</p>
+        <h1>Python – první lekce</h1>
+        <p>Student postupuje krok za krokem. Další lekce se odemkne až po splnění předchozí.</p>
+        <a href="{{ url_for('python.reset') }}">
+            <button class="restart">
+                🔄 Začít kurz od začátku
+            </button>
+        </a>
+    </div>
+    <a class="teacher" href="{{ url_for('python.teacher') }}">Přehled pro učitele</a>
+</header>
+
+<main class="grid">
+{% for lesson in lessons %}
+    {% set unlocked = is_unlocked(lesson.id) %}
+    {% if unlocked %}
+    <a class="card {% if lesson.id in done %}done{% endif %}" href="{{ url_for('python.lesson', lesson_id=lesson.id) }}">
+    {% else %}
+    <div class="card locked">
+    {% endif %}
+        <div class="num">{% if unlocked %}{{ lesson.id }}{% else %}🔒{% endif %}</div>
+        <h2>{{ lesson.title }}</h2>
+        <p>{{ lesson.goal }}</p>
+        {% if lesson.id in done %}
+            <span>✓ splněno</span>
+        {% elif unlocked %}
+            <span>začít</span>
+        {% else %}
+            <span>zamčeno</span>
+        {% endif %}
+    {% if unlocked %}
+    </a>
+    {% else %}
+    </div>
+    {% endif %}
+{% endfor %}
+</main>
+
+<footer>
+    <a href="{{ url_for('python.reset') }}">Smazat postup</a>
+</footer>
+</body>
+</html>

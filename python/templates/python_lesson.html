@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>{{ lesson.title }}</title>
+    <link rel="stylesheet"href="{{ url_for('python.static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+    <a href="{{ url_for('python.index') }}">← Zpět na lekce</a>
+    <strong>Úkol {{ lesson.id }} / {{ total }}</strong>
+</header>
+
+<main class="lesson">
+    <section class="panel theory">
+        <p class="badge">Výzva</p>
+        <h1>{{ lesson.title }}</h1>
+        <h3>Cíl</h3>
+        <p>{{ lesson.goal }}</p>
+        <h3>Krátké připomenutí</h3>
+        <p>{{ lesson.explain }}</p>
+        <h3>Úkol</h3>
+        <p class="task">{{ lesson.task }}</p>
+
+        <div class="hint-box">
+            <h3>Nápověda</h3>
+            {% if hint_level == 0 %}
+                <p>Zkus to nejdřív bez nápovědy.</p>
+            {% else %}
+                {% for h in lesson.hints[:hint_level] %}
+                    <div class="hint"><strong>Nápověda {{ loop.index }}:</strong><pre>{{ h }}</pre></div>
+                {% endfor %}
+            {% endif %}
+            {% if hint_level < 3 %}
+                <a class="hint-button" href="{{ url_for('python.hint', lesson_id=lesson.id) }}">💡 Odkryj další nápovědu</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="panel editor">
+        <form method="post">
+            <label for="code">Sem piš svůj Python kód:</label>
+            <textarea id="code" name="code" spellcheck="false">{{ code }}</textarea>
+
+            {% if input_count > 0 %}
+            <div class="stdin-panel">
+                <h3>Simulovaný terminál – vstupy pro input()</h3>
+                <p>Program obsahuje <strong>{{ input_count }}</strong>× <code>input()</code>. Zadej hodnoty stejně, jako by ses jich ptal terminál ve VS Code.</p>
+                {% for i in range(input_count) %}
+                    <label class="stdin-label">Vstup {{ i + 1 }}</label>
+                    <input class="stdin-input" name="stdin_{{ i }}" value="{{ input_values[i] if input_values|length > i else '' }}" placeholder="Sem napiš hodnotu pro input {{ i + 1 }}">
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="buttons">
+                <button name="action" value="run">▶ Spustit</button>
+                <button name="action" value="check" class="check">✓ Zkontrolovat</button>
+            </div>
+        </form>
+
+        {% if message %}
+            <div class="message {% if success %}ok{% else %}bad{% endif %}">{{ message }}</div>
+        {% endif %}
+
+        <div class="terminal">
+            <h3>Výstup programu</h3>
+            {% if terminal_note %}<p class="terminal-note">{{ terminal_note }}</p>{% endif %}
+            <pre>{{ output if output else "Zatím žádný výstup." }}</pre>
+        </div>
+
+        {% if error %}
+        <div class="terminal error">
+            <h3>Chyba</h3>
+            <pre>{{ error }}</pre>
+        </div>
+        {% endif %}
+
+        <nav class="nav">
+            {% if prev_id %}<a href="{{ url_for('python.lesson', lesson_id=prev_id) }}">← Předchozí</a>{% endif %}
+            {% if next_id and lesson.id in done %}<a href="{{ url_for('python.lesson', lesson_id=next_id) }}">Další →</a>{% endif %}
+            {% if next_id and lesson.id not in done %}<span class="locked-next">Další lekce se odemkne po splnění.</span>{% endif %}
+            {% if not next_id and lesson.id in done %}<a href="{{ url_for('python.teacher') }}">Dokončeno →</a>{% endif %}
+        </nav>
+    </section>
+</main>
+</body>
+</html>
